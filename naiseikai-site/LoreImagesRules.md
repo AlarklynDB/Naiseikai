@@ -158,3 +158,41 @@ When an imgbb link is provided:
 - Backdrop `onClick` to close — disabled globally by `lightbox-controls.js`, don't add it
 - Keeping both placeholder AND real image — remove placeholder entirely
 - `aria-label` missing on ✕ button — `lightbox-controls.js` won't find the button and ESC/touch won't work
+
+---
+
+## `lightbox-controls.js` — Implementation Notes
+
+These are the specific decisions made after debugging. Do not change these without understanding why they exist.
+
+### Scroll zoom (desktop)
+- `wheel` listener is on the **overlay**, not the `<img>` — so zoom fires wherever the cursor is in the fullscreen view
+- React's `transition: 'opacity 200ms ease, transform 200ms ease'` is stripped on open and replaced with `transition: 'opacity 200ms ease'` only — leaving the `transform` transition caused zoom to feel laggy/delayed since every scale step was being eased
+
+### Mouse drag (desktop)
+- `mousedown` listener is on the **overlay** (not the img) so middle-click works anywhere in the lightbox
+- Left-click drag only activates when `scale > 1` — at 1x left-click does nothing (prevents accidental drags)
+- Middle mouse (button 1) drag works at any zoom level
+
+### Pinch zoom (mobile)
+- All touch handlers (`touchstart`, `touchmove`, `touchend`) live on the **overlay**, not the `<img>`
+- This was the key fix — putting them on the img meant the overlay-level `stopPropagation` ate all touches before the img handler could see them
+- `{ passive: false }` is required on all three so `e.preventDefault()` actually works
+
+### X button tappable on mobile
+- `onTouchStart` checks `if (closeBtn && (e.target === closeBtn || closeBtn.contains(e.target))) return;` before calling `preventDefault`
+- Without this early return, `preventDefault` swallows the tap and the button never fires
+
+### Page zoom lock (mobile)
+- `touch-action: none` is set on the **overlay element** AND on `document.documentElement` (`<html>`) while open
+- Setting it only on the overlay isn't enough — some mobile browsers still zoom the viewport through it
+- Both are restored in `detachListeners()` when the lightbox closes
+
+### Backdrop click blocked
+- A capture-phase `click` listener on the overlay checks `if (e.target === overlay)` and calls `e.stopImmediatePropagation()` — this prevents React's `onClick` on the overlay from firing
+- This is why you should NOT add an `onClick` to the overlay div in the React component — `lightbox-controls.js` already handles it
+
+### MutationObserver signature
+- Detects lightbox open: any added DOM node with `style.zIndex === '9999'` (or a child with that inline style)
+- Detects lightbox close: same node being removed
+- Finds ✕ button via `overlay.querySelector('button[aria-label="Close"]')` — **`aria-label="Close"` is mandatory**
