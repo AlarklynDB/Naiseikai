@@ -10,16 +10,16 @@ function HanakoReinaArt() {
     <>
       {/* Thumbnail — clickable */}
       <div
+        className="w-full rounded-xl overflow-hidden border border-[#2e2b26] cursor-zoom-in group relative"
         onClick={() => setOpen(true)}
-        className="relative group cursor-pointer w-full overflow-hidden rounded-sm border border-[#2e2b26]"
       >
         <img
           src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-          alt="Hanako Reina — Character Art"
-          className="w-full h-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.01]"
+          alt="Hanako Reina"
+          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 text-[#f2ebeb] text-xs tracking-widest uppercase border border-[#f2ebeb]/40 px-3 py-1 rounded-sm transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-mono text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">
             Click to expand
           </span>
         </div>
@@ -29,19 +29,22 @@ function HanakoReinaArt() {
       {open && (
         <div
           style={{ zIndex: 9999 }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center pt-24 pb-12 px-10"
+          onClick={() => setOpen(false)}
         >
           <button
             aria-label="Close"
             onClick={() => setOpen(false)}
-            className="absolute top-16 right-6 text-[#f2ebeb]/70 hover:text-[#f2ebeb] text-xl font-light transition-colors"
+            className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
           >
-            &#x2715;
+            ✕
           </button>
           <img
             src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-            alt="Hanako Reina — Character Art, fullscreen"
-            className="max-w-[95vw] max-h-[95vh] h-auto rounded-sm object-contain"
+            alt="Hanako Reina — fullscreen"
+            className="rounded-lg shadow-2xl object-contain"
+            style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
