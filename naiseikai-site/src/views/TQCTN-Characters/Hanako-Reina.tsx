@@ -1,16 +1,59 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-// ─── Shared helpers ───────────────────────────────────────────────────────────
-function ImgPlaceholder({ label, aspect = 'aspect-[3/4]' }: { label: string; aspect?: string }) {
+// ─── Lightbox ─────────────────────────────────────────────────────────────────
+
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  const [visible, setVisible] = useState(false)
+
+  // Fade in on mount
+  useEffect(() => {
+    requestAnimationFrame(() => setVisible(true))
+  }, [])
+
+  // Lock body scroll while open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = '' }
+  }, [])
+
+  function handleClose() {
+    setVisible(false)
+    setTimeout(onClose, 200)
+  }
+
   return (
-    <div className={`w-full ${aspect} bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 my-6`}>
-      <span className="text-3xl opacity-20">🖼</span>
-      <span className="text-[10px] font-mono text-text-faint opacity-50">{label}</span>
+    <div
+      className="fixed inset-0 flex items-center justify-center backdrop-blur-sm pt-24 pb-12 px-10"
+      style={{ zIndex: 9999, backgroundColor: `rgba(0,0,0,${visible ? 0.92 : 0})`, transition: 'background-color 200ms ease' }}
+      onClick={handleClose}
+    >
+      <button
+        onClick={handleClose}
+        className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+      <img
+        src={src}
+        alt={alt}
+        className="rounded-lg shadow-2xl object-contain"
+        style={{
+          maxWidth: '95vw',
+          maxHeight: '95vh',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'scale(1)' : 'scale(0.96)',
+          transition: 'opacity 200ms ease, transform 200ms ease',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      />
     </div>
   )
 }
+
+// ─── Shared helpers ───────────────────────────────────────────────────────────
 
 function Divider() {
   return <div className="section-divider my-8" />
@@ -42,7 +85,7 @@ function IdentityBlock({ icon, title, children }: { icon: string; title: string;
 
 function Breadcrumb() {
   return (
-    <nav className="flex items-center gap-2 text-xs font-mono text-text-faint mb-8 flex-wrap">
+    <div className="flex items-center gap-2 text-xs font-mono text-text-faint mb-8 flex-wrap">
       <Link to="/titles" className="hover:text-[#00e5ff] transition-colors">Titles</Link>
       <span>/</span>
       <Link to="/titles/KarasuToNinja-TQCTN" className="hover:text-[#00e5ff] transition-colors">The Quiet Crow &amp; The Ninja</Link>
@@ -50,16 +93,34 @@ function Breadcrumb() {
       <Link to="/titles/KarasuToNinja-TQCTN" className="hover:text-[#00e5ff] transition-colors">Characters</Link>
       <span>/</span>
       <span className="text-[#ff6b9d]">Hanako Reina</span>
-    </nav>
+    </div>
   )
 }
 
 // ─── Character content ────────────────────────────────────────────────────────
 
 function HanakoReinaTab() {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
+
   return (
     <div className="space-y-8">
-      <ImgPlaceholder label="/characters/hanako-reina.jpg" aspect="aspect-[3/4]" />
+
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
+
+      {/* Character Art */}
+      <div
+        className="w-full rounded-xl overflow-hidden border border-[#ff6b9d]/30 cursor-zoom-in group relative"
+        onClick={() => setLightbox({ src: 'https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png', alt: 'Hanako Reina — Character Art' })}
+      >
+        <img
+          src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
+          alt="Hanako Reina — Character Art"
+          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-body text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">Click to expand</span>
+        </div>
+      </div>
 
       <div>
         <span className="neon-sign text-[10px] mb-3 inline-block">Main Character</span>
@@ -229,7 +290,7 @@ function HanakoReinaTab() {
         <div className="space-y-3 text-sm text-text-muted leading-relaxed">
           <div className="neon-card">
             <p className="font-mono text-xs text-text-faint mb-2">Appearance</p>
-            <p>She has black hair with red highlights, and it's medium long, where it ends to her shoulders. She has heterochromatic eyes. Brown on her right eye , red on her left. However, she hates the color combination and wears an ice-patch (eye-patch) on her brown eye. Her ice patch is made of packed ice and acts as a one way mirror for Hanako. She can see through it, but other people can’t. It is tucked beneath her bangs.</p>
+            <p>She has black hair with red highlights, and it's medium long, where it ends to her shoulders. She has heterochromatic eyes. Brown on her right eye , red on her left. However, she hates the color combination and wears an ice-patch (eye-patch) on her brown eye. Her ice patch is made of packed ice and acts as a one way mirror for Hanako. She can see through it, but other people can't. It is tucked beneath her bangs.</p>
           </div>
           <div className="neon-card">
             <p className="font-mono text-xs text-text-faint mb-2">Clothing (Usual / Casual)</p>
