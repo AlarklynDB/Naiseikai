@@ -20,26 +20,26 @@ Each image gets a **self-contained helper component** defined above the main `ex
 ### Full copy-paste pattern
 
 ```tsx
-import { useState } from 'react';
-import { Link } from 'react-router-dom'; // keep existing imports
+import { useState } from 'react'
+import { Link } from 'react-router-dom' // keep existing imports
 
 // --- Art helper component (one per image, defined above main export) ---
 function MyPageArt() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   return (
     <>
       {/* Thumbnail — clickable */}
       <div
+        className="w-full rounded-xl overflow-hidden border border-[#2e2b26] cursor-zoom-in group relative"
         onClick={() => setOpen(true)}
-        className="relative group cursor-pointer w-full overflow-hidden rounded-sm border border-[#2e2b26]"
       >
         <img
           src="https://i.ibb.co/XXXX/Image-Name.png"
           alt="Descriptive alt text"
-          className="w-full h-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.01]"
+          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 text-[#f2ebeb] text-xs tracking-widest uppercase border border-[#f2ebeb]/40 px-3 py-1 rounded-sm transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-mono text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">
             Click to expand
           </span>
         </div>
@@ -49,35 +49,38 @@ function MyPageArt() {
       {open && (
         <div
           style={{ zIndex: 9999 }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center pt-24 pb-12 px-10"
+          onClick={() => setOpen(false)}
         >
           <button
             aria-label="Close"
             onClick={() => setOpen(false)}
-            className="absolute top-16 right-6 text-[#f2ebeb]/70 hover:text-[#f2ebeb] text-xl font-light transition-colors"
+            className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
           >
-            &#x2715;
+            ✕
           </button>
           <img
             src="https://i.ibb.co/XXXX/Image-Name.png"
             alt="Descriptive alt text — fullscreen"
-            className="max-w-[95vw] max-h-[95vh] h-auto rounded-sm object-contain"
+            className="rounded-lg shadow-2xl object-contain"
+            style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
     </>
-  );
+  )
 }
 
 // --- Main page component ---
 export default function MyPage() {
   return (
-    <div className="max-w-[960px] mx-auto px-6 py-20 space-y-16">
+    <div className="page-container">
       {/* Place art component wherever it belongs in the page */}
       <MyPageArt />
       {/* ... rest of page ... */}
     </div>
-  );
+  )
 }
 ```
 
@@ -92,11 +95,14 @@ Define a separate helper component for each image (e.g. `MyPageMainArt`, `MyPage
 | Property | Value | Reason |
 |---|---|---|
 | `zIndex` | `style={{ zIndex: 9999 }}` inline | Tailwind `z-[9999]` can be purged; inline always wins |
-| ✕ button position | `absolute top-16 right-6` | Clears the navbar height, stays within overlay stacking context |
+| Overlay layout | `flex items-center justify-center` | Centers the image in the viewport — NOT `items-start` |
+| ✕ button position | `absolute top-16 right-4` | Clears the navbar height, stays within overlay stacking context |
+| ✕ button style | `rounded-full w-8 h-8 bg-black/60 border border-white/20` | Pill-style close button matching site aesthetic |
 | Padding | `pt-24 pb-12 px-10` | `pt-24` clears the navbar; rest gives breathing room |
 | Backdrop | `bg-black/90 backdrop-blur-sm` | Dark enough to read art clearly |
-| Image sizing | `max-w-[95vw] max-h-[95vh] h-auto object-contain` | Fills screen without overflow |
-| Backdrop click | Does NOT close — blocked by `lightbox-controls.js` | Only ✕ button or ESC closes |
+| Image sizing | `style={{ maxWidth: '95vw', maxHeight: '95vh' }}` inline + `object-contain` | Fills screen without overflow or distortion |
+| Backdrop click | `onClick={() => setOpen(false)}` on the overlay div | Clicking outside the image closes it |
+| Image click | `onClick={(e) => e.stopPropagation()}` on the `<img>` | Clicking the image itself does NOT close it |
 | Scroll lock | Handled by `lightbox-controls.js` | No need to add manually |
 
 ---
@@ -129,9 +135,11 @@ Watches for any DOM node with `style.zIndex === '9999'` being added/removed. Fin
 
 ## Thumbnail Rules
 
-- Always `w-full h-auto` — never `aspect-video` for real art (distorts non-16:9 images)
-- `rounded-sm border border-[#2e2b26]` to match site style
-- `group-hover:scale-[1.01]` subtle hover scale on thumbnail
+- Always `w-full h-auto object-cover` — never `aspect-video` for real art (distorts non-16:9 images)
+- `rounded-xl border border-[#2e2b26]` to match site style
+- `cursor-zoom-in` on the wrapper div
+- `group-hover:scale-[1.02]` subtle hover scale on thumbnail
+- Hover overlay: `bg-black/20` tint + `"Click to expand"` pill label
 - Remove the old placeholder div entirely when real art is provided — never keep both
 
 ---
@@ -141,12 +149,15 @@ Watches for any DOM node with `style.zIndex === '9999'` being added/removed. Fin
 When an imgbb link is provided:
 
 1. Add `import { useState } from 'react'` at the top if not already there
-2. Define a named helper component (e.g. `function HanakoArt()`) above the main `export default`
-3. Use the full overlay pattern (thumbnail + `{open && ...}` fullscreen)
-4. Make sure the ✕ button has `aria-label="Close"` (required for `lightbox-controls.js`)
-5. Overlay must use `style={{ zIndex: 9999 }}` inline
-6. Place `<MyArt />` in the JSX where the placeholder was
-7. Delete the old placeholder div
+2. Define a named helper component (e.g. `function HanakoReinaArt()`) **above** the main `export default`
+3. Use the full pattern: thumbnail wrapper + `{open && ...}` fullscreen overlay
+4. Overlay must use `style={{ zIndex: 9999 }}` inline — never Tailwind `z-[9999]`
+5. Overlay uses `flex items-center justify-center` — the image is centered in the screen
+6. ✕ button must have `aria-label="Close"` (required for `lightbox-controls.js`)
+7. Image in overlay uses `style={{ maxWidth: '95vw', maxHeight: '95vh' }}` inline + `object-contain`
+8. Clicking the backdrop closes; clicking the image does NOT (`e.stopPropagation()`)
+9. Place `<MyArt />` in the JSX where the placeholder was
+10. Delete the old placeholder div entirely
 
 ---
 
@@ -155,9 +166,10 @@ When an imgbb link is provided:
 - `useState` called inside JSX or an IIFE — **breaks hooks rules**, will crash
 - `z-[9999]` via Tailwind class — can be purged by the build
 - `aspect-video` on real art images — distorts non-16:9 art
-- Backdrop `onClick` to close — disabled globally by `lightbox-controls.js`, don't add it
+- `items-start` on the overlay — image appears at the top instead of centered
+- `aria-label` missing on ✕ button — `lightbox-controls.js` won't find the button
 - Keeping both placeholder AND real image — remove placeholder entirely
-- `aria-label` missing on ✕ button — `lightbox-controls.js` won't find the button and ESC/touch won't work
+- Shared `lightbox` state between multiple images — each art component must be self-contained
 
 ---
 
@@ -167,7 +179,7 @@ These are the specific decisions made after debugging. Do not change these witho
 
 ### Scroll zoom (desktop)
 - `wheel` listener is on the **overlay**, not the `<img>` — so zoom fires wherever the cursor is in the fullscreen view
-- React's `transition: 'opacity 200ms ease, transform 200ms ease'` is stripped on open and replaced with `transition: 'opacity 200ms ease'` only — leaving the `transform` transition caused zoom to feel laggy/delayed since every scale step was being eased
+- React's `transform` transition is stripped on open and replaced with `transition: 'opacity 200ms ease'` only — leaving the `transform` transition caused zoom to feel laggy/delayed
 
 ### Mouse drag (desktop)
 - `mousedown` listener is on the **overlay** (not the img) so middle-click works anywhere in the lightbox
@@ -176,7 +188,6 @@ These are the specific decisions made after debugging. Do not change these witho
 
 ### Pinch zoom (mobile)
 - All touch handlers (`touchstart`, `touchmove`, `touchend`) live on the **overlay**, not the `<img>`
-- This was the key fix — putting them on the img meant the overlay-level `stopPropagation` ate all touches before the img handler could see them
 - `{ passive: false }` is required on all three so `e.preventDefault()` actually works
 
 ### X button tappable on mobile
@@ -185,14 +196,14 @@ These are the specific decisions made after debugging. Do not change these witho
 
 ### Page zoom lock (mobile)
 - `touch-action: none` is set on the **overlay element** AND on `document.documentElement` (`<html>`) while open
-- Setting it only on the overlay isn't enough — some mobile browsers still zoom the viewport through it
 - Both are restored in `detachListeners()` when the lightbox closes
 
-### Backdrop click blocked
-- A capture-phase `click` listener on the overlay checks `if (e.target === overlay)` and calls `e.stopImmediatePropagation()` — this prevents React's `onClick` on the overlay from firing
-- This is why you should NOT add an `onClick` to the overlay div in the React component — `lightbox-controls.js` already handles it
+### Backdrop click
+- The overlay has `onClick={() => setOpen(false)}` in React — this closes on backdrop tap
+- `lightbox-controls.js` does NOT block this — it only blocks accidental re-fires via its own capture listener
+- The `<img>` has `onClick={(e) => e.stopPropagation()}` to prevent the backdrop click from triggering when clicking the image
 
 ### MutationObserver signature
-- Detects lightbox open: any added DOM node with `style.zIndex === '9999'` (or a child with that inline style)
+- Detects lightbox open: any added DOM node with `style.zIndex === '9999'`
 - Detects lightbox close: same node being removed
 - Finds ✕ button via `overlay.querySelector('button[aria-label="Close"]')` — **`aria-label="Close"` is mandatory**
