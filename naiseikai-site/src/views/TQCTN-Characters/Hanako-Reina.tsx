@@ -5,51 +5,21 @@ import { Link } from 'react-router-dom'
 // ─── Character Art ────────────────────────────────────────────────────────────
 
 function HanakoReinaArt() {
-  const [open, setOpen] = useState(false)
-
   return (
-    <>
-      {/* Thumbnail */}
-      <div
-        className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in group relative"
-        onClick={() => setOpen(true)}
-      >
-        <img
-          src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-          alt="Hanako Reina"
-          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-mono text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">
-            Click to view
-          </span>
-        </div>
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
+        alt="Hanako Reina"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
       </div>
-
-      {/* Lightbox */}
-      {open && (
-        <div
-          data-lightbox
-          className="fixed inset-0 flex items-center justify-center bg-black/95 p-6"
-          style={{ zIndex: 9999 }}
-          onClick={() => setOpen(false)}
-        >
-          <button
-            aria-label="Close"
-            className="fixed top-4 right-5 text-white/60 hover:text-white text-2xl font-light leading-none z-[10000]"
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </button>
-          <img
-            src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-            alt="Hanako Reina"
-            className="max-w-[92vw] max-h-[92vh] rounded-lg shadow-2xl object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-    </>
+    </div>
   )
 }
 
