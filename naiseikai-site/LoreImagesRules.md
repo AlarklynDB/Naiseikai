@@ -7,7 +7,7 @@ Never use a plain `<img>` tag alone. Every art image must be wrapped with the Li
 ### Required steps
 1. Add a `Lightbox` component at the top of the file (before the main export)
 2. Add `const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);` inside the main component
-3. Render `{lightbox && <Lightbox ... />}` as the first child inside the BodyWidth960 wrapper
+3. Render `{lightbox && <Lightbox ... />}` as the first child inside the BodyWidth wrapper
 4. Wrap every `<img>` in the clickable container below
 
 ### Lightbox Component (copy-paste ready)
