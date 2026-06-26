@@ -229,9 +229,9 @@
     for (const mutation of mutations) {
       for (const node of mutation.addedNodes) {
         if (node.nodeType !== 1) continue;
-        const overlay = (node.style && node.style.zIndex === '10000')
+        const overlay = (node.style && node.style.zIndex === '9999')
           ? node
-          : node.querySelector && node.querySelector('[style*="z-index: 10000"]');
+          : node.querySelector && node.querySelector('[style*="z-index: 9999"]');
         if (!overlay) continue;
         const img = overlay.querySelector('img');
         const btn = overlay.querySelector('button[aria-label="Close"]');
@@ -240,8 +240,8 @@
 
       for (const node of mutation.removedNodes) {
         if (node.nodeType !== 1) continue;
-        const wasOverlay = node.style && node.style.zIndex === '10000';
-        const hadOverlay = node.querySelector && node.querySelector('[style*="z-index: 10000"]');
+        const wasOverlay = node.style && node.style.zIndex === '9999';
+        const hadOverlay = node.querySelector && node.querySelector('[style*="z-index: 9999"]');
         if (wasOverlay || hadOverlay) detachListeners();
       }
     }

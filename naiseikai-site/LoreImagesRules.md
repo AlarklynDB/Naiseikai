@@ -49,7 +49,7 @@ function MyCharacterArt() {
       {/* Fullscreen overlay */}
       {open && (
         <div
-          style={{ zIndex: 10000 }}
+          style={{ zIndex: 9999 }}
           className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
         >
           <button
@@ -82,7 +82,7 @@ Define a separate helper component for each (e.g. `HanakoReinaArt`, `HanakoReina
 
 | Property | Value | Reason |
 |---|---|---|
-| `zIndex` | `style={{ zIndex: 10000 }}` inline | Naiseikai navbar uses `backdrop-blur-md` which creates a new stacking context — `9999` is not enough, `10000` beats it |
+| `zIndex` | `style={{ zIndex: 9999 }}` inline | Tailwind `z-[9999]` can be purged; inline always wins |
 | Flex alignment | `items-start` | Pushes image to top, `pt-24` clears the navbar. `items-center` ignores navbar and causes image to go behind it |
 | ✕ button position | `absolute top-16 right-4` | Clears navbar height, stays within overlay stacking context |
 | Padding | `pt-24 pb-12 px-10` | `pt-24` clears the navbar; rest gives breathing room |
@@ -114,7 +114,7 @@ Located at `public/lightbox-controls.js`, loaded in `BaseLayout.astro`. Automati
 - All touch handlers (`touchstart`, `touchmove`, `touchend`) are on the **overlay** — if placed on the img, the overlay-level `stopPropagation` eats all touches before img can see them
 - `touch-action: none` set on overlay AND `document.documentElement` — both are required to fully block browser viewport zoom on mobile
 - Detects ✕ button via `button[aria-label="Close"]` — **`aria-label="Close"` on the button is mandatory**
-- In naiseikai, MutationObserver watches for `zIndex === '10000'` (not `9999`) — because the overlay uses `10000`
+- MutationObserver watches for `zIndex === '9999'`
 - On close: restores `transition`, `transform`, `cursor` on the image, restores `touchAction` on `<html>`
 
 ---
@@ -127,7 +127,7 @@ When an imgbb link is provided:
 2. Define a named helper component (e.g. `function HanakoReinaArt()`) **above** the main `export default`
 3. Use the full overlay pattern (thumbnail + `{open && ...}` fullscreen block)
 4. Overlay uses `items-start` (NOT `items-center`) + `pt-24 pb-12 px-10`
-5. Overlay uses `style={{ zIndex: 10000 }}` inline (**not 9999** — naiseikai navbar has backdrop-blur which needs a higher value)
+5. Overlay uses `style={{ zIndex: 9999 }}` inline
 6. ✕ button must have `aria-label="Close"`
 7. No `onClick` on the overlay div or the fullscreen `<img>`
 8. Render `<MyArt />` where the placeholder was
@@ -141,19 +141,23 @@ When an imgbb link is provided:
 - `onClick={() => setOpen(false)}` on the overlay backdrop — conflicts with `lightbox-controls.js` backdrop blocker
 - `onClick={(e) => e.stopPropagation()}` on the fullscreen `<img>` — not needed, causes confusion
 - `useState` called inside JSX or an IIFE — breaks React hooks rules, will crash
-- `z-[9999]` or `zIndex: 9999` — naiseikai navbar has `backdrop-blur-md` which creates its own stacking context; use `10000` here
-- Tailwind `z-[10000]` class — can be purged by build, always use inline `style={{ zIndex: 10000 }}`
+- Tailwind `z-[9999]` class — can be purged by build, always use inline `style={{ zIndex: 9999 }}`
 - `aspect-video` or fixed height on art images — distorts non-16:9 art, always use `h-auto`
 - Missing `aria-label="Close"` on ✕ button — `lightbox-controls.js` won't find the button, ESC and mobile tap won't work
 - Keeping old placeholder AND real image — remove placeholder entirely
 ---
 
-## Why Naiseikai Uses `zIndex: 10000` (not 9999)
+## Navbar Stacking Context — Important Note
 
-The naiseikai navbar uses `backdrop-blur-md` (`backdrop-filter: blur(...)`) in its CSS. In browsers, **`backdrop-filter` creates a new stacking context** — this means elements inside it can visually appear above sibling elements with higher z-index values that are outside that context.
+The naiseikai navbar previously used `backdrop-blur-md` (`backdrop-filter: blur(...)`) on the `<header>`, dropdown menus, and mobile drawer. **`backdrop-filter` creates a new browser compositing layer / stacking context** — elements inside it paint above sibling elements regardless of z-index values outside that context.
 
-Result: a `zIndex: 9999` overlay would still show the navbar text/background on top of the fullscreen image.
+This caused the navbar to appear on top of the fullscreen lightbox overlay even at `zIndex: 9999`.
 
-Fix: bump the overlay to `zIndex: 10000`. The `lightbox-controls.js` MutationObserver is updated to watch for `10000` accordingly.
+**Fix applied:** `backdrop-blur-md` was removed from all three places in `Navbar.tsx`:
+- Main `<header>` solid state
+- Desktop dropdown panel
+- Mobile drawer
 
-> The hibrythia site does NOT have this issue because its navbar does not use `backdrop-filter`.
+The navbar now uses solid opaque backgrounds (`bg-[rgba(5,5,20,0.96)]`) without blur, which keeps it in the normal stacking order and allows `zIndex: 9999` on the overlay to correctly sit above it.
+
+> The hibrythia navbar uses `sticky` positioning and `backdrop-blur-sm` only — which doesn't cause the same compositing issue.

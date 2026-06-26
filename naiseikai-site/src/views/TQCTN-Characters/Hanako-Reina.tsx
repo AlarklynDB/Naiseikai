@@ -28,7 +28,7 @@ function HanakoReinaArt() {
       {/* Fullscreen overlay */}
       {open && (
         <div
-          style={{ zIndex: 10000 }}
+          style={{ zIndex: 9999 }}
           className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
         >
           <button

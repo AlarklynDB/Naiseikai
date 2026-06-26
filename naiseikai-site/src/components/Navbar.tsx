@@ -48,7 +48,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         solidNav
-          ? 'bg-[rgba(5,5,20,0.96)] backdrop-blur-md border-b border-[rgba(100,80,200,0.25)] shadow-lg shadow-black/40'
+          ? 'bg-[rgba(5,5,20,0.96)] border-b border-[rgba(100,80,200,0.25)] shadow-lg shadow-black/40'
           : 'bg-transparent'
       }`}
     >
@@ -85,7 +85,7 @@ export default function Navbar() {
                   </svg>
                 </button>
                 {openDropdown === link.label && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-[rgba(8,8,30,0.98)] border border-[rgba(100,80,200,0.3)] rounded-lg shadow-xl shadow-black/50 overflow-hidden backdrop-blur-md">
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-[rgba(8,8,30,0.98)] border border-[rgba(100,80,200,0.3)] rounded-lg shadow-xl shadow-black/50 overflow-hidden">
                     {link.children.map((child) =>
                       child.external ? (
                         <a
@@ -145,7 +145,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-[rgba(5,5,20,0.98)] backdrop-blur-md border-t border-[rgba(100,80,200,0.2)]">
+        <div className="lg:hidden bg-[rgba(5,5,20,0.98)] border-t border-[rgba(100,80,200,0.2)]">
           <ul className="max-w-5xl mx-auto px-4 py-3 space-y-0.5">
             {navLinks.map((link) =>
               link.children ? (
