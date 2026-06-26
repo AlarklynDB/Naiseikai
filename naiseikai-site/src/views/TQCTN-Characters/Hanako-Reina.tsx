@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
 
 function HanakoReinaArt() {
   const [open, setOpen] = useState(false)
+
   return (
     <>
-      {/* Thumbnail — clickable */}
+      {/* Thumbnail */}
       <div
-        className="w-full rounded-xl overflow-hidden border border-[#2e2b26] cursor-zoom-in group relative"
+        className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in group relative"
         onClick={() => setOpen(true)}
       >
         <img
@@ -20,29 +21,31 @@ function HanakoReinaArt() {
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-mono text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">
-            Click to expand
+            Click to view
           </span>
         </div>
       </div>
 
-      {/* Fullscreen overlay */}
+      {/* Lightbox */}
       {open && (
         <div
+          data-lightbox
+          className="fixed inset-0 flex items-center justify-center bg-black/95 p-6"
           style={{ zIndex: 9999 }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
+          onClick={() => setOpen(false)}
         >
           <button
             aria-label="Close"
+            className="fixed top-4 right-5 text-white/60 hover:text-white text-2xl font-light leading-none z-[10000]"
             onClick={() => setOpen(false)}
-            className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
           >
             ✕
           </button>
           <img
             src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-            alt="Hanako Reina — fullscreen"
-            className="rounded-lg shadow-2xl object-contain"
-            style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+            alt="Hanako Reina"
+            className="max-w-[92vw] max-h-[92vh] rounded-lg shadow-2xl object-contain"
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
