@@ -1,55 +1,51 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-// ─── Lightbox ─────────────────────────────────────────────────────────────────
+// ─── Character Art ────────────────────────────────────────────────────────────
 
-function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  const [visible, setVisible] = useState(false)
-
-  // Fade in on mount
-  useEffect(() => {
-    requestAnimationFrame(() => setVisible(true))
-  }, [])
-
-  // Lock body scroll while open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
-  }, [])
-
-  function handleClose() {
-    setVisible(false)
-    setTimeout(onClose, 200)
-  }
-
+function HanakoReinaArt() {
+  const [open, setOpen] = useState(false)
   return (
-    <div
-      className="fixed inset-0 flex items-center justify-center backdrop-blur-sm pt-24 pb-12 px-10"
-      style={{ zIndex: 9999, backgroundColor: `rgba(0,0,0,${visible ? 0.92 : 0})`, transition: 'background-color 200ms ease' }}
-      onClick={handleClose}
-    >
-      <button
-        onClick={handleClose}
-        className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
-        aria-label="Close"
+    <>
+      {/* Thumbnail — clickable */}
+      <div
+        onClick={() => setOpen(true)}
+        className="relative group cursor-pointer w-full overflow-hidden rounded-sm border border-[#2e2b26]"
       >
-        ✕
-      </button>
-      <img
-        src={src}
-        alt={alt}
-        className="rounded-lg shadow-2xl object-contain"
-        style={{
-          maxWidth: '95vw',
-          maxHeight: '95vh',
-          opacity: visible ? 1 : 0,
-          transform: visible ? 'scale(1)' : 'scale(0.96)',
-          transition: 'opacity 200ms ease, transform 200ms ease',
-        }}
-        onClick={(e) => e.stopPropagation()}
-      />
-    </div>
+        <img
+          src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
+          alt="Hanako Reina — Character Art"
+          className="w-full h-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.01]"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 text-[#f2ebeb] text-xs tracking-widest uppercase border border-[#f2ebeb]/40 px-3 py-1 rounded-sm transition-opacity duration-300">
+            Click to expand
+          </span>
+        </div>
+      </div>
+
+      {/* Fullscreen overlay */}
+      {open && (
+        <div
+          style={{ zIndex: 9999 }}
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
+        >
+          <button
+            aria-label="Close"
+            onClick={() => setOpen(false)}
+            className="absolute top-16 right-6 text-[#f2ebeb]/70 hover:text-[#f2ebeb] text-xl font-light transition-colors"
+          >
+            &#x2715;
+          </button>
+          <img
+            src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
+            alt="Hanako Reina — Character Art, fullscreen"
+            className="max-w-[95vw] max-h-[95vh] h-auto rounded-sm object-contain"
+          />
+        </div>
+      )}
+    </>
   )
 }
 
@@ -100,27 +96,11 @@ function Breadcrumb() {
 // ─── Character content ────────────────────────────────────────────────────────
 
 function HanakoReinaTab() {
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
 
   return (
     <div className="space-y-8">
 
-      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
-
-      {/* Character Art */}
-      <div
-        className="w-full rounded-xl overflow-hidden border border-[#ff6b9d]/30 cursor-zoom-in group relative"
-        onClick={() => setLightbox({ src: 'https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png', alt: 'Hanako Reina — Character Art' })}
-      >
-        <img
-          src="https://i.ibb.co/nNG8yZpF/Hanako-Reina-Banner.png"
-          alt="Hanako Reina — Character Art"
-          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-body text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">Click to expand</span>
-        </div>
-      </div>
+      <HanakoReinaArt />
 
       <div>
         <span className="neon-sign text-[10px] mb-3 inline-block">Main Character</span>
