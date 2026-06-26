@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Author from "../views/Author"
+---
+
+<BaseLayout
+  title={"Author | The Naiseikai Universe"}
+  description={"About Alarkius Elvya Jay, author of The Naiseikai Universe."}
+  path={"/author"}
+>
+  <View_Author client:load />
+</BaseLayout>

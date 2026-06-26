@@ -1,0 +1,399 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   FONTS
+────────────────────────────────────────────────────────────── */
+
+/*
+  Yu Gothic UI — applied to CJK Unified Ideographs (kanji, kana).
+  Yu Gothic UI ships on Windows 8.1+. On macOS/Linux it falls back
+  to Hiragino Sans → Noto Sans JP → system CJK fonts.
+*/
+@font-face {
+  font-family: 'YuGothicCJK';
+  src: local('Yu Gothic UI Regular'),
+       local('Yu Gothic UI'),
+       local('YuGothic-Regular'),
+       local('Yu Gothic');
+  font-weight: normal;
+  font-style: normal;
+  /* Target CJK Unified Ideographs + Hiragana + Katakana + CJK Extensions */
+  unicode-range:
+    U+3000-303F,   /* CJK Symbols and Punctuation */
+    U+3040-309F,   /* Hiragana */
+    U+30A0-30FF,   /* Katakana */
+    U+4E00-9FFF,   /* CJK Unified Ideographs */
+    U+F900-FAFF,   /* CJK Compatibility Ideographs */
+    U+FF00-FFEF;   /* Halfwidth and Fullwidth Forms */
+}
+@font-face {
+  font-family: 'YuGothicCJK';
+  src: local('Hiragino Sans W3'),
+       local('Hiragino Kaku Gothic ProN'),
+       local('Noto Sans JP');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range:
+    U+3000-303F,
+    U+3040-309F,
+    U+30A0-30FF,
+    U+4E00-9FFF,
+    U+F900-FAFF,
+    U+FF00-FFEF;
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Prevent horizontal scroll bleed on mobile */
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  body {
+    background-color: #05050f;
+    color: #e8e3f5;
+    font-family: 'YuGothicCJK', 'Inter', system-ui, sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    /* Prevent background from expanding beyond viewport on mobile */
+    overflow-x: hidden;
+    max-width: 100vw;
+    /* Content protection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Full element lockdown — no highlight sneaking through */
+  *, *::before, *::after {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  button, a, span, p, h1, h2, h3, h4, h5, h6, div, li, ul, ol, label {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+  /* Disable ghost drag on links & media */
+  a, a * {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+  img, svg, video {
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+  }
+
+  /* Starfield bg lives on ::before so we can blur it without affecting content */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    /* The starfield bg is applied here as a CSS background layer */
+    background-image:
+      /* scattered small stars */
+      radial-gradient(1px 1px at 10% 12%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 40%, rgba(200,216,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 8%,  rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 57% 5%,  rgba(200,216,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 18%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 33%, rgba(200,216,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 9%,  rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 48%, rgba(200,216,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 42%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 50%, rgba(200,216,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 28%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5%  35%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 60%, rgba(200,216,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 27% 20%, rgba(255,255,255,1) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 73% 15%, rgba(200,216,255,1) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 90% 42%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      /* deep sky gradient */
+      linear-gradient(to bottom,
+        #02020c 0%,
+        #05051a 25%,
+        #080830 50%,
+        #0a0a25 70%,
+        #0d0d20 85%,
+        #05050f 100%
+      );
+    background-size: 100% 100%;
+    /* Clamp to viewport — prevents starfield from spilling on mobile */
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    filter: blur(1.5px);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif JP', 'Lora', Georgia, serif;
+    line-height: 1.2;
+    color: #e8e3f5;
+  }
+
+  /* Remove text highlight/selection color entirely */
+  ::selection {
+    background-color: transparent;
+    color: inherit;
+  }
+  ::-moz-selection {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  /* Allow selection in inputs/textareas */
+  input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #05050f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a55;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a6a;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   CITY SKYLINE — persistent bottom element via ::after on html
+   The skyline sits fixed at the bottom, above the starfield bg
+────────────────────────────────────────────────────────────── */
+.city-skyline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* SVG city skyline injected via React component */
+.city-skyline svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   COMPONENT UTILITIES
+────────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Page wrapper — sits above the skyline */
+  .page-container {
+    @apply relative z-10 max-w-4xl mx-auto px-4 py-16 pb-56 sm:px-6 sm:py-20;
+  }
+
+  .page-container-wide {
+    @apply relative z-10 max-w-6xl mx-auto px-4 py-16 pb-56 sm:px-6 sm:py-20;
+  }
+
+  /* ── Section divider ── */
+  .section-divider {
+    @apply border-t border-border my-12;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    /* flex-col ensures stacked children never overflow sideways on mobile */
+    @apply border border-border bg-surface rounded-lg p-4 flex flex-col gap-3;
+  }
+  .callout-purple {
+    @apply border-[rgba(191,95,255,0.3)] bg-[rgba(191,95,255,0.08)];
+  }
+  .callout-cyan {
+    @apply border-[rgba(0,229,255,0.3)] bg-[rgba(0,229,255,0.07)];
+  }
+  .callout-pink {
+    @apply border-[rgba(255,110,180,0.3)] bg-[rgba(255,110,180,0.08)];
+  }
+  .callout-amber {
+    @apply border-[rgba(255,179,71,0.3)] bg-[rgba(255,179,71,0.08)];
+  }
+  .callout-red {
+    @apply border-[rgba(255,80,80,0.3)] bg-[rgba(255,80,80,0.07)];
+  }
+
+  /* ── Tags ── */
+  .tag {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-medium bg-surface border border-border text-text-muted;
+  }
+  .tag-purple { @apply border-[rgba(191,95,255,0.4)] bg-[rgba(191,95,255,0.1)] text-[#d49fff]; }
+  .tag-cyan   { @apply border-[rgba(0,229,255,0.4)]  bg-[rgba(0,229,255,0.08)]  text-[#7ef5ff]; }
+  .tag-pink   { @apply border-[rgba(255,110,180,0.4)] bg-[rgba(255,110,180,0.1)] text-[#ffaad4]; }
+  .tag-amber  { @apply border-[rgba(255,179,71,0.4)]  bg-[rgba(255,179,71,0.1)]  text-[#ffd080]; }
+
+  /* ── Neon text glow helpers ── */
+  .neon-text-cyan   { color: #00e5ff; text-shadow: 0 0 8px rgba(0,229,255,0.8), 0 0 20px rgba(0,229,255,0.4); }
+  .neon-text-purple { color: #bf5fff; text-shadow: 0 0 8px rgba(191,95,255,0.8), 0 0 20px rgba(191,95,255,0.4); }
+  .neon-text-pink   { color: #ff6eb4; text-shadow: 0 0 8px rgba(255,110,180,0.8), 0 0 20px rgba(255,110,180,0.4); }
+  .neon-text-amber  { color: #ffb347; text-shadow: 0 0 8px rgba(255,179,71,0.8), 0 0 20px rgba(255,179,71,0.4); }
+  .neon-text-teal   { color: #00ffcc; text-shadow: 0 0 8px rgba(0,255,204,0.8), 0 0 20px rgba(0,255,204,0.4); }
+
+  /* ── Neon border / card ── */
+  .neon-card {
+    /* Reduced padding on mobile so cards don't overflow narrow screens */
+    @apply bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300;
+  }
+  .neon-card:hover {
+    @apply border-[rgba(191,95,255,0.5)] bg-surface-raised;
+    box-shadow: 0 0 20px rgba(191,95,255,0.15), 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .neon-card-cyan:hover {
+    @apply border-[rgba(0,229,255,0.5)] bg-surface-raised;
+    box-shadow: 0 0 20px rgba(0,229,255,0.15), 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .neon-card-pink:hover {
+    @apply border-[rgba(255,110,180,0.5)] bg-surface-raised;
+    box-shadow: 0 0 20px rgba(255,110,180,0.15), 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  /* ── Neon button ── */
+  .btn-neon-purple {
+    @apply px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    color: #d49fff;
+    border: 1px solid rgba(191,95,255,0.5);
+    background: rgba(191,95,255,0.1);
+  }
+  .btn-neon-purple:hover {
+    background: rgba(191,95,255,0.2);
+    box-shadow: 0 0 12px rgba(191,95,255,0.4);
+    color: #e8c8ff;
+  }
+
+  .btn-neon-cyan {
+    @apply px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    color: #7ef5ff;
+    border: 1px solid rgba(0,229,255,0.5);
+    background: rgba(0,229,255,0.08);
+  }
+  .btn-neon-cyan:hover {
+    background: rgba(0,229,255,0.18);
+    box-shadow: 0 0 12px rgba(0,229,255,0.4);
+    color: #beffff;
+  }
+
+  /* ── Neon sign box ── (decorative headers/labels) */
+  .neon-sign {
+    @apply inline-block px-4 py-1 rounded text-xs tracking-widest uppercase font-mono;
+    border: 1px solid rgba(0,229,255,0.6);
+    color: #00e5ff;
+    background: rgba(0,229,255,0.06);
+    text-shadow: 0 0 6px rgba(0,229,255,0.8);
+    box-shadow: 0 0 8px rgba(0,229,255,0.2), inset 0 0 6px rgba(0,229,255,0.05);
+    animation: neonPulse 4s ease-in-out infinite;
+  }
+
+  .neon-sign-purple {
+    border-color: rgba(191,95,255,0.6);
+    color: #bf5fff;
+    background: rgba(191,95,255,0.06);
+    text-shadow: 0 0 6px rgba(191,95,255,0.8);
+    box-shadow: 0 0 8px rgba(191,95,255,0.2), inset 0 0 6px rgba(191,95,255,0.05);
+  }
+
+  .neon-sign-pink {
+    border-color: rgba(255,110,180,0.6);
+    color: #ff6eb4;
+    background: rgba(255,110,180,0.06);
+    text-shadow: 0 0 6px rgba(255,110,180,0.8);
+    box-shadow: 0 0 8px rgba(255,110,180,0.2), inset 0 0 6px rgba(255,110,180,0.05);
+  }
+
+  /* ── Hero title Japanese style ── */
+  .hero-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Prose content area ── */
+  .prose-naiseikai {
+    @apply text-text leading-relaxed;
+  }
+  .prose-naiseikai h2 {
+    @apply text-2xl font-serif mt-10 mb-4;
+    color: #e8e3f5;
+  }
+  .prose-naiseikai h3 {
+    @apply text-xl font-serif mt-8 mb-3;
+    color: #c8b8f0;
+  }
+  .prose-naiseikai p {
+    @apply mb-4 text-text-muted;
+  }
+  .prose-naiseikai a {
+    @apply underline transition-colors duration-150;
+    color: #7ef5ff;
+  }
+  .prose-naiseikai a:hover {
+    color: #beffff;
+  }
+
+  /* ── Scrolling star twinkle layer (decorative) ── */
+  .star-layer {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   KEYFRAMES
+────────────────────────────────────────────────────────────── */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.9; filter: brightness(1); }
+  50%       { opacity: 0.65; filter: brightness(0.8); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes shootingStar {
+  0%   { transform: translateX(0) translateY(0) rotate(-30deg); opacity: 1; width: 0px; }
+  70%  { opacity: 0.8; }
+  100% { transform: translateX(300px) translateY(80px) rotate(-30deg); opacity: 0; width: 120px; }
+}
+
+.shooting-star {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), transparent);
+  animation: shootingStar 3s ease-in-out infinite;
+}

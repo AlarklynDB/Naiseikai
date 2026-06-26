@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Lore from "../views/Lore"
+---
+
+<BaseLayout
+  title={"World Lore & Timeline | The Naiseikai Universe"}
+  description={"The history, lore, and timeline of The Naiseikai Universe."}
+  path={"/world-lore-and-timeline"}
+>
+  <View_Lore client:load />
+</BaseLayout>

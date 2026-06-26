@@ -1,0 +1,189 @@
+  {
+  "_note": "Backup of all JSON-LD schemas used in the alaria-aurelia Cloudflare Worker. Last updated: 2026-06-11.",
+
+  "author_schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.alarkiusej.com/#author",
+        "name": "Alarkius Elvya Jay",
+        "alternateName": ["Alarkius Elvya Jay", "AlarkiusEJ", "AJ", "KarasuEJ", "Alarkius"],
+        "url": "https://www.alarkiusej.com/",
+        "jobTitle": ["Author", "Composer", "Worldbuilder", "Artist"],
+        "description": "Alarkius Elvya Jay, also known as AlarkiusEJ, is the author of The Hibrythian Saga and creator of the Naiseikai Universe.",
+        "sameAs": [
+          "https://www.youtube.com/@AlarkiusEJ",
+          "https://www.youtube.com/@AlarkiusJay",
+          "https://www.youtube.com/@TheHibrythianSaga",
+          "https://www.reddit.com/user/OfficialAlarkiusJay",
+          "https://www.reddit.com/r/ShizukanaKarasuNinja/",
+          "https://www.reddit.com/r/HibrydsCUniverse/",
+          "https://www.linkedin.com/in/alarkiusej/",
+          "https://github.com/AlarkiusJay",
+          "https://github.com/TheAlarklynZone",
+          "https://github.com/AlarklynDB",          
+          "https://www.thehibrythiansaga.com/",
+          "https://www.naiseikaiuniverse.com/",
+          "https://www.barnesandnoble.com/search?q=Alarkius%20Elvya%20Jay&contributorName=alarkius-elvya-jay",
+          "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Hibrythian%20Saga",
+          "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Naiseikai%20Universe",
+        ]
+      },
+      {
+      "@type": "ProfilePage",
+      "@id": "https://www.alarkiusej.com/#profilepage",
+      "url": "https://www.alarkiusej.com/",
+      "name": "Alarkius Elvya Jay — Official Author Website",
+      "description": "The official profile and author page of Alarkius Elvya Jay, creator of The Hibrythian Saga and The Naiseikai Universe.",
+      "mainEntity": { "@id": "https://www.alarkiusej.com/#author" },
+      "about": { "@id": "https://www.alarkiusej.com/#author" },
+      "creator": { "@id": "https://www.alarkiusej.com/#author" },
+      "publisher": { "@id": "https://www.alarkiusej.com/#brand" },
+      "dateModified": "2026-06-16"
+      }
+      {
+        "@type": "Organization",
+        "@id": "https://www.alarkiusej.com/#brand",
+        "name": "AlarkiusEJ",
+        "url": "https://www.alarkiusej.com/",
+        "founder": { "@id": "https://www.alarkiusej.com/#author" }
+      },
+      {
+      "@type": "MusicAlbum",
+      "@id": "https://www.alarkiusej.com/#album-1",
+      "name": "Alarkius Elvya Jay",
+      "url": "https://www.youtube.com/@AlarkiusJay",
+      "description": "AlarkiusEJ's Music, but on YouTube.",
+      "byArtist": { "@id": "https://www.alarkiusej.com/#author" },
+      "datePublished": "",
+      "numTracks": ,
+      "genre": ["Original Sound Tracks", "Orchestral", "Film"],
+      "inAlbum": null
+      }  
+      {
+        "@type": "WebSite",
+        "@id": "https://www.alarkiusej.com/#website",
+        "url": "https://www.alarkiusej.com/",
+        "name": "AlarkiusEJ",
+        "description": "Official Author Website of Alarkius Elvya Jay, featuring books, worlds, music, art, and creative projects.",
+        "about":     { "@id": "https://www.alarkiusej.com/#author" },
+        "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+        "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+      }
+    ]
+  },
+
+  "hibrythian_schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.alarkiusej.com/#author"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.alarkiusej.com/#brand"
+      },
+      {
+        "@type": "CreativeWorkSeries",
+        "@id": "https://www.thehibrythiansaga.com/#series",
+        "name": "The Hibrythian Saga",
+        "url": "https://www.thehibrythiansaga.com/",
+        "description": "An Adventure Fantasy Book Series created by Alarkius Elvya Jay.",
+        "author":    { "@id": "https://www.alarkiusej.com/#author" },
+        "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+        "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+      },
+      {
+      "@type": "MusicAlbum",
+      "@id": "https://www.alarkiusej.com/#album-2",
+      "name": "Alarkius Elvya Jay",
+      "url": "https://www.youtube.com/@TheHibrythianSaga",
+      "description": "AlarkiusEJ's Music, but on YouTube, for The Hibrythian Saga.",
+      "byArtist": { "@id": "https://www.alarkiusej.com/#author" },
+      "datePublished": "",
+      "numTracks": ,
+      "genre": ["Original Sound Tracks", "Orchestral", "Film" , "Book Music"],
+      "inAlbum": null
+      }  
+      {
+        "@type": "WebSite",
+        "@id": "https://www.thehibrythiansaga.com/#website",
+        "url": "https://www.thehibrythiansaga.com/",
+        "name": "The Hibrythian Saga",
+        "description": "The Official Website for The Hibrythian Saga by Alarkius Elvya Jay.",
+        "about":     { "@id": "https://www.thehibrythiansaga.com/#series" },
+        "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+        "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+      }
+      {
+        "@type": "Book",
+        "@id": "https://www.thehibrythiansaga.com/#book-0",
+        "name": "Hibryds, The Hibrythian Genesis of Everything",
+        "bookEdition": "First Edition",
+        "isbn": "9798994097687",
+        "numberOfPages": 50,
+        "inSeries": { "@id": "https://www.thehibrythiansaga.com/#series" },
+        "author": { "@id": "https://www.alarkiusej.com/#author" },
+        "url": "https://www.thehibrythiansaga.com/bookshelf/vol0"
+      }
+      {
+        "@type": "Book",
+        "@id": "https://www.thehibrythiansaga.com/#book-1",
+        "name": "Hibryds - A Grand Voyage",
+        "bookEdition": "First Edition", "Hardcover",
+        "isbn": "9798994097663", "9798994097670",
+        "numberOfPages": 542,
+        "inSeries": { "@id": "https://www.thehibrythiansaga.com/#series" },
+        "author": { "@id": "https://www.alarkiusej.com/#author" },
+        "url": "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Hibrythian%20Saga"
+      }
+    ]
+  },
+
+  "naiseikai_schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.alarkiusej.com/#author"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.alarkiusej.com/#brand"
+      },
+      {
+        "@type": "CreativeWorkSeries",
+        "@id": "https://www.naiseikaiuniverse.com/#series",
+        "name": "The Naiseikai Universe",
+        "url": "https://www.naiseikaiuniverse.com/",
+        "description": "A Light Novel Universe and Connected Creative World created by Alarkius Elvya Jay.",
+        "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+        "author":    { "@id": "https://www.alarkiusej.com/#author" },
+        "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.naiseikaiuniverse.com/#website",
+        "url": "https://www.naiseikaiuniverse.com/",
+        "name": "The Naiseikai Universe",
+        "description": "The Official Website for The Naiseikai Universe created by Alarkius Elvya Jay.",
+        "about":     { "@id": "https://www.naiseikaiuniverse.com/#series" },
+        "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+        "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+      }
+      {
+        "@type": "Book",
+        "@id": "https://www.naiseikaiuniverse.com/#book-1",
+        "name": "The Quiet Crow & The Ninja (Shizukana Karasu to Ninja)",
+        "bookEdition": "First Edition", "Collector's Edition",
+        "isbn": "9798994097656", "9798994097656",
+        "numberOfPages": 294,
+        "inSeries": { "@id": "https://www.naiseikaiuniverse.com/#series" },
+        "author": { "@id": "https://www.alarkiusej.com/#author" },
+        "url": "https://www.naiseikaiuniverse.com/titles/KarasuToNinja-TQCTN"
+      }
+    ]
+  }
+}

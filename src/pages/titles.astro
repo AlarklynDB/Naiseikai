@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Titles from "../views/Titles"
+---
+
+<BaseLayout
+  title={"Titles | The Naiseikai Universe"}
+  description={"Browse the stories and series set within The Naiseikai Universe."}
+  path={"/titles"}
+>
+  <View_Titles client:load />
+</BaseLayout>

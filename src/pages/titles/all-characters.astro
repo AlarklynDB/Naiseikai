@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import View_AllCharacters from "../../views/AllCharacters"
+---
+
+<BaseLayout
+  title={"All Characters | The Naiseikai Universe"}
+  description={"The full character roster across every title in The Naiseikai Universe."}
+  path={"/titles/all-characters"}
+>
+  <View_AllCharacters client:load />
+</BaseLayout>

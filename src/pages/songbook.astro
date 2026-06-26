@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Songbook from "../views/Songbook"
+---
+
+<BaseLayout
+  title={"Songbook | The Naiseikai Universe"}
+  description={"The songbook of The Naiseikai Universe."}
+  path={"/songbook"}
+>
+  <View_Songbook client:load />
+</BaseLayout>

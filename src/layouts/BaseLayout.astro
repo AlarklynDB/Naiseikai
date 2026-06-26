@@ -1,0 +1,219 @@
+---
+// ============================================================
+// BaseLayout — shared HTML shell for every Naiseikai page.
+// Replaces index.html (head/GA/OG/splash/Fort Knox) AND the
+// App.tsx layout (Navbar + Footer + CitySkyline + PWADevTools).
+//
+// Per-page props set unique <title> / description / canonical
+// so each of the 47 routes ships real, unique metadata.
+//
+// Note: ScrollToTop (react-router) is intentionally dropped —
+// Astro does real page navigations, so the browser resets scroll
+// natively and resolves #hash anchors on its own.
+// ============================================================
+import '../index.css'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import CitySkyline from '../components/CitySkyline'
+import PWADevTools from '../components/PWADevTools'
+
+interface Props {
+  title?: string
+  description?: string
+  /** Path of this page, e.g. "/universe" — used for canonical + og:url */
+  path?: string
+  image?: string
+}
+
+const DEFAULT_DESC =
+  'The Official Universe hub for The Naiseikai Universe — The World of Introspection, By Alarkius Elvya Jay.'
+
+const {
+  title = '内省界 | The Naiseikai Universe',
+  description = DEFAULT_DESC,
+  path = '/',
+  image = 'https://i.ibb.co/V0Mq1HR7/naiseikai-banner.png',
+} = Astro.props
+
+const canonical = new URL(path, 'https://naiseikaiuniverse.com').href
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBXEGB8QHB"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VBXEGB8QHB');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Discord & Social Embeds -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="The Naiseikai Universe" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
+
+    <!-- Apple / iOS home screen -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Naiseikai" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#bf5fff" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+
+    <!-- Splash screen -->
+    <style>
+      html, body { background-color: #0d0b12; margin: 0; padding: 0; }
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: #0d0b12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: splashFade 0.5s ease-out 1.2s forwards;
+        pointer-events: none;
+      }
+      #splash-logo {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.05rem;
+        letter-spacing: 0.2em;
+        color: #bf5fff;
+        opacity: 0;
+        animation: splashTextIn 0.6s ease-out 0.2s forwards;
+      }
+      @keyframes splashTextIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes splashFade {
+        from { opacity: 1; }
+        to   { opacity: 0; pointer-events: none; }
+      }
+      /* Once-per-tab: skip splash entirely on internal navigation */
+      html.splash-seen #splash { display: none !important; }
+    </style>
+
+    <!-- Splash gate: run before paint so the splash never flashes on internal nav.
+         Shows once per tab session; reload / hard-reload re-triggers it. -->
+    <script is:inline>
+      (function () {
+        try {
+          var nav = performance.getEntriesByType('navigation')[0];
+          var isReload = nav ? nav.type === 'reload'
+                             : (performance.navigation && performance.navigation.type === 1);
+          if (isReload) sessionStorage.removeItem('splashSeen');
+          if (sessionStorage.getItem('splashSeen') === '1') {
+            document.documentElement.classList.add('splash-seen');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <!-- Splash overlay -->
+    <div id="splash" aria-hidden="true">
+      <span id="splash-logo">The Naiseikai Universe</span>
+    </div>
+
+    <!-- App shell (was App.tsx) -->
+    <PWADevTools client:load />
+    <div class="min-h-screen flex flex-col relative">
+      <Navbar client:load />
+      <main class="flex-1 relative z-10">
+        <slot />
+      </main>
+      <Footer client:load />
+      <CitySkyline />
+    </div>
+
+    <!-- Content protection (from index.html + main.tsx) -->
+    <script is:inline>
+      document.addEventListener('contextmenu',  function(e) { e.preventDefault(); });
+      document.addEventListener('copy',         function(e) { e.preventDefault(); });
+      document.addEventListener('cut',          function(e) { e.preventDefault(); });
+      document.addEventListener('paste',        function(e) {
+        var tag = (e.target && e.target.tagName) || '';
+        if (tag !== 'INPUT' && tag !== 'TEXTAREA') e.preventDefault();
+      });
+      document.addEventListener('selectstart',  function(e) { e.preventDefault(); });
+      document.addEventListener('dragstart',    function(e) { e.preventDefault(); });
+
+      // Fort Knox — Devtools chaos (debugger trap + console flood)
+      // Skips on localhost and when ?dev=1 is in the URL
+      (function devtoolsChaos() {
+        var params = new URLSearchParams(window.location.search);
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
+        if (params.get('dev') === '1') return;
+        setInterval(function() { debugger; }, 100);
+        setInterval(function() {
+          console.clear();
+          console.log('%c ACCESS DENIED ', 'background:#0d0b12;color:#bf5fff;font-size:14px;font-weight:bold;padding:4px 12px;border:1px solid #bf5fff;letter-spacing:0.2em;');
+          console.log('%c This site is protected. Unauthorized inspection is not permitted. ', 'color:#7a746e;font-size:11px;');
+          console.log('%c All Y.A.R.C Subjects including unauthorized assets has breached this universe. Get ready to be hunted. ', 'color:#bf5fff;font-size:11px;font-style:italic;');
+        }, 100);
+      })();
+
+      // Block F12, Ctrl+Shift+I/J/C/K, Ctrl+U, Ctrl+P
+      document.addEventListener('keydown', function(e) {
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c','K','k'].includes(e.key)) ||
+          (e.ctrlKey && ['u','U'].includes(e.key)) ||
+          (e.ctrlKey && ['p','P'].includes(e.key))
+        ) { e.preventDefault(); e.stopPropagation(); return false; }
+      });
+    </script>
+
+    <!-- Remove splash after fade + mark this tab session as having seen it -->
+    <script is:inline>
+      (function () {
+        try { sessionStorage.setItem('splashSeen', '1'); } catch (e) {}
+        var splash = document.getElementById('splash');
+        if (splash) {
+          splash.addEventListener('animationend', function(e) {
+            if (e.animationName === 'splashFade') this.remove();
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

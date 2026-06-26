@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Home from "../views/Home"
+---
+
+<BaseLayout
+  title={"内省界 | The Naiseikai Universe"}
+  description={"The Official Universe hub for The Naiseikai Universe — The World of Introspection, By Alarkius Elvya Jay."}
+  path={"/"}
+>
+  <View_Home client:load />
+</BaseLayout>

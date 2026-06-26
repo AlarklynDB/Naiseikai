@@ -1,0 +1,33 @@
+{
+  "_description": {
+    "file": "aej-brand-handles.json",
+    "purpose": "Official registry of brand handle identifiers associated with Alarkius Elvya Jay and all properties under the AEJ umbrella. These handles serve as keyword identifiers for SEO entity recognition, linking searches across platforms back to alarkiusej.com.",
+    "usage": "Reference this file when registering handles on new platforms, updating schema markup, or verifying official handle ownership across the AEJ brand ecosystem.",
+    "maintained_by": "Alarkius Elvya Jay",
+    "last_updated": "2026-06-06"
+  },
+  "name": "aej-brand-handles",
+  "version": "1.0.0",
+  "description": "Official brand handle identifiers for Alarkius Elvya Jay and Associated Properties.",
+  "owner": "Alarkius Elvya Jay",
+  "url": "https://alarkiusej.com",
+  "handles": {
+    "author": [
+      "@AlarkiusEJ",
+      "@AlarkiusElvyaJay",
+      "@AlarkiusElvyaJ",
+      "@AlarkiusJay",
+      "@KarasuEJ"
+    ],
+    "naiseikai-universe": [
+      "@TheNaiseikaiUniverse",
+      "@NaiseikaiUniverse",
+      "@NaiseikaiSaga",
+      "@TheNaiseikaiSaga",
+      "@TheQuietCrowAndTheNinja",
+      "@OfficialTCQTN",
+      "@CrowAndNinja",
+      "@TCQTNNaiseikai"
+    ]
+  }
+}

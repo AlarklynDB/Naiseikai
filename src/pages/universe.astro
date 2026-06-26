@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import View_Universe from "../views/Universe"
+---
+
+<BaseLayout
+  title={"The Universe | The Naiseikai Universe"}
+  description={"Explore the cosmology and structure of The Naiseikai Universe — The World of Introspection."}
+  path={"/universe"}
+>
+  <View_Universe client:load />
+</BaseLayout>
