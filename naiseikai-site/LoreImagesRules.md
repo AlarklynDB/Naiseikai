@@ -1,15 +1,21 @@
 # LoreImagesRules.md
-> Last updated: June 26, 2026
+> Last updated: June 26, 2026 — migrated from fullscreen overlay → in-place magnifier
 
 Rules for all art images on naiseikaiuniverse.com. Applies to character profiles, title pages, worldbuilding pages, and any page that receives an imgbb link.
 
-Adjacent to `LoreImageRules.md` in the hibrythia repo — same system, same pattern.
+> **naiseikai uses a different system than hibrythia.** hibrythia uses a fullscreen overlay pattern (`LoreImageRules.md`). naiseikai uses an **in-place magnifier** — no overlay, no fixed positioning, no z-index conflicts.
+
+---
+
+## Why Magnifier, Not Fullscreen?
+
+The naiseikai navbar uses `fixed` positioning. Even after removing `backdrop-blur-md`, a fullscreen overlay approach creates z-index complexity that varies by browser. The in-place magnifier avoids all of that — the image stays exactly where it is in the document flow, zoom and pan happen inline.
 
 ---
 
 ## Core Rule
 
-**Whenever an imgbb link (i.ibb.co) is provided for art, always replace the placeholder with a clickable lightbox image.**
+**Whenever an imgbb link (i.ibb.co) is provided for art, always replace the placeholder with a `data-magnify` container.**
 
 Never use a plain `<img>` tag alone. Every art image must use the pattern below.
 
@@ -17,105 +23,72 @@ Never use a plain `<img>` tag alone. Every art image must use the pattern below.
 
 ## React Component Pattern
 
-Each image gets a **self-contained helper component** defined above the main `export default`. This avoids hook rules issues — never call `useState` inside JSX or an IIFE.
+Each image gets a **self-contained helper component** defined above the main `export default`. No `useState` needed — the magnifier is handled entirely by `lightbox-controls.js`.
 
 ### Full copy-paste pattern
 
 ```tsx
-import { useState } from 'react'
-
 // --- Art helper component (one per image, defined above main export) ---
 function MyCharacterArt() {
-  const [open, setOpen] = useState(false)
   return (
-    <>
-      {/* Thumbnail — clickable */}
-      <div
-        className="w-full rounded-xl overflow-hidden border border-[#2e2b26] cursor-zoom-in group relative"
-        onClick={() => setOpen(true)}
-      >
-        <img
-          src="https://i.ibb.co/XXXX/Image-Name.png"
-          alt="Descriptive alt text"
-          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-mono text-xs text-white tracking-widest uppercase bg-black/50 px-3 py-1.5 rounded-full">
-            Click to expand
-          </span>
-        </div>
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/XXXX/Image-Name.png"
+        alt="Descriptive alt text"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
       </div>
-
-      {/* Fullscreen overlay */}
-      {open && (
-        <div
-          style={{ zIndex: 9999 }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-start justify-center pt-24 pb-12 px-10"
-        >
-          <button
-            aria-label="Close"
-            onClick={() => setOpen(false)}
-            className="absolute top-16 right-4 text-white/80 hover:text-white transition-colors bg-black/60 rounded-full w-8 h-8 flex items-center justify-center text-base leading-none border border-white/20"
-          >
-            ✕
-          </button>
-          <img
-            src="https://i.ibb.co/XXXX/Image-Name.png"
-            alt="Descriptive alt text — fullscreen"
-            className="rounded-lg shadow-2xl object-contain"
-            style={{ maxWidth: '95vw', maxHeight: '95vh' }}
-          />
-        </div>
-      )}
-    </>
+    </div>
   )
 }
 ```
 
-### If a page has multiple images
-
-Define a separate helper component for each (e.g. `HanakoReinaArt`, `HanakoReinaFormArt`) and render them individually. Do not share state between them.
-
----
-
-## Overlay Rules
+### Key attributes
 
 | Property | Value | Reason |
 |---|---|---|
-| `zIndex` | `style={{ zIndex: 9999 }}` inline | Tailwind `z-[9999]` can be purged; inline always wins |
-| Flex alignment | `items-start` | Pushes image to top, `pt-24` clears the navbar. `items-center` ignores navbar and causes image to go behind it |
-| ✕ button position | `absolute top-16 right-4` | Clears navbar height, stays within overlay stacking context |
-| Padding | `pt-24 pb-12 px-10` | `pt-24` clears the navbar; rest gives breathing room |
-| Backdrop | `bg-black/90 backdrop-blur-sm` | Dark enough to see art clearly |
-| Image sizing | `maxWidth: '95vw', maxHeight: '95vh', object-contain` | Fills screen without overflow |
-| Backdrop `onClick` | **Do NOT add** | Blocked globally by `lightbox-controls.js` — adding it causes conflicts |
-| `onClick` on fullscreen `<img>` | **Do NOT add** | Not needed; `lightbox-controls.js` handles everything |
+| `data-magnify` | on container div | `lightbox-controls.js` targets this selector |
+| `cursor-zoom-in` | Tailwind class on container | Visual hint to user |
+| `select-none` | on `<img>` | Prevents text-selection cursor during drag |
+| `draggable={false}` | on `<img>` | Prevents browser native drag-ghost interfering with pan |
+| hint text div | `pointer-events-none` | Hint can't interfere with drag |
+| No `onClick` | — | No state, no overlay — nothing to toggle |
+| No `useState` | — | Not needed; JS handles everything |
+
+### If a page has multiple images
+
+Define a separate helper component for each (e.g. `HanakoReinaArt`, `HanakoReinaFormArt`) and render them individually.
 
 ---
 
 ## Global `lightbox-controls.js`
 
-Located at `public/lightbox-controls.js`, loaded in `BaseLayout.astro`. Automatically applies to **every lightbox sitewide** via MutationObserver watching for `style.zIndex === '9999'`.
+Located at `public/lightbox-controls.js`, loaded globally. Automatically initializes on all `[data-magnify]` elements via DOM ready + MutationObserver.
 
 ### What it provides (no per-page code needed)
 
 | Feature | Desktop | Mobile |
 |---|---|---|
-| Close | ESC key | ✕ button tap |
-| Zoom | Scroll wheel (1x–6x) | Pinch (2 fingers, 1x–6x) |
-| Pan | Left-click drag (when zoomed) | Single-finger drag (when zoomed) |
-| Pan (alt) | Middle mouse hold + drag | — |
-| Page zoom lock | — | `touch-action: none` on overlay + `<html>` |
-| Backdrop click | Blocked (does not close) | Blocked |
+| Zoom | Scroll wheel (1x–5x) | Pinch — 2 fingers (1x–5x) |
+| Pan | Left-click drag (when zoomed > 1x) | Single-finger drag (when zoomed > 1x) |
+| Reset | Double-click | — |
+| Cursor | `zoom-in` at 1x, `grab` when zoomed, `grabbing` while dragging | — |
 
 ### Key implementation details
 
-- `wheel` + `mousedown` listeners are on the **overlay**, not the `<img>` — fires anywhere in fullscreen
-- All touch handlers (`touchstart`, `touchmove`, `touchend`) are on the **overlay** — if placed on the img, the overlay-level `stopPropagation` eats all touches before img can see them
-- `touch-action: none` set on overlay AND `document.documentElement` — both are required to fully block browser viewport zoom on mobile
-- Detects ✕ button via `button[aria-label="Close"]` — **`aria-label="Close"` on the button is mandatory**
-- MutationObserver watches for `zIndex === '9999'`
-- On close: restores `transition`, `transform`, `cursor` on the image, restores `touchAction` on `<html>`
+- Listeners are placed on the **container** (`[data-magnify]`), not on the `<img>` directly
+- Transform is applied to the `<img>` using `scale()` + `translate()` with `transformOrigin: '0 0'`
+- `_magnifyInit` flag prevents double-init when MutationObserver fires multiple times
+- Scroll zoom adjusts by ±0.2 per wheel tick, clamped 1–5
+- Pan only activates when `scale > 1` (no accidental dragging at 1x)
+- At scale 1: translate resets to 0,0 automatically
+- Pinch sensitivity: `(distanceDelta) * 0.02` per move event
 
 ---
 
@@ -123,41 +96,31 @@ Located at `public/lightbox-controls.js`, loaded in `BaseLayout.astro`. Automati
 
 When an imgbb link is provided:
 
-1. Add `import { useState } from 'react'` at the top if not already there
-2. Define a named helper component (e.g. `function HanakoReinaArt()`) **above** the main `export default`
-3. Use the full overlay pattern (thumbnail + `{open && ...}` fullscreen block)
-4. Overlay uses `items-start` (NOT `items-center`) + `pt-24 pb-12 px-10`
-5. Overlay uses `style={{ zIndex: 9999 }}` inline
-6. ✕ button must have `aria-label="Close"`
-7. No `onClick` on the overlay div or the fullscreen `<img>`
-8. Render `<MyArt />` where the placeholder was
-9. Delete the old placeholder div entirely
+1. Define a named helper component (e.g. `function HanakoReinaArt()`) **above** the main `export default`
+2. Use the magnifier pattern: `data-magnify` on container, `<img>` with `select-none draggable={false}`, hint text div
+3. Render `<MyArt />` where the placeholder was
+4. Delete the old placeholder div entirely
+5. No `import { useState }` needed if it was only used for the old lightbox
+6. No `style={{ zIndex }}`, no overlay div, no ✕ button
 
 ---
 
 ## Anti-Patterns (never do these)
 
-- `items-center` on the overlay — image will go behind the navbar in fullscreen
-- `onClick={() => setOpen(false)}` on the overlay backdrop — conflicts with `lightbox-controls.js` backdrop blocker
-- `onClick={(e) => e.stopPropagation()}` on the fullscreen `<img>` — not needed, causes confusion
-- `useState` called inside JSX or an IIFE — breaks React hooks rules, will crash
-- Tailwind `z-[9999]` class — can be purged by build, always use inline `style={{ zIndex: 9999 }}`
-- `aspect-video` or fixed height on art images — distorts non-16:9 art, always use `h-auto`
-- Missing `aria-label="Close"` on ✕ button — `lightbox-controls.js` won't find the button, ESC and mobile tap won't work
-- Keeping old placeholder AND real image — remove placeholder entirely
+- Fullscreen overlay (`fixed inset-0 zIndex 9999`) — old pattern, replaced entirely
+- `useState` for open/close toggle — not needed with magnifier
+- `onClick` toggling a lightbox state — not needed
+- Missing `data-magnify` on the container — JS won't find it, magnifier won't init
+- `draggable` left as default (`true`) on `<img>` — browser drag ghost will conflict with pan
+- Fixed height or `aspect-video` on art — distorts non-16:9 art, always `h-auto`
+- Adding `touch-action: none` on container yourself — `lightbox-controls.js` does NOT do this for in-place magnifier (only did it for the old fullscreen overlay). Leave touch-action alone.
+
 ---
 
-## Navbar Stacking Context — Important Note
+## Navbar Note
 
-The naiseikai navbar previously used `backdrop-blur-md` (`backdrop-filter: blur(...)`) on the `<header>`, dropdown menus, and mobile drawer. **`backdrop-filter` creates a new browser compositing layer / stacking context** — elements inside it paint above sibling elements regardless of z-index values outside that context.
+The naiseikai navbar (`Navbar.tsx`) uses `fixed top-0 z-50` positioning. `backdrop-blur-md` was previously present and caused compositing layer issues with z-index. It has been removed — the navbar now uses solid opaque backgrounds only.
 
-This caused the navbar to appear on top of the fullscreen lightbox overlay even at `zIndex: 9999`.
+Since the in-place magnifier doesn't use fixed positioning or z-index at all, there is no navbar conflict whatsoever with this pattern.
 
-**Fix applied:** `backdrop-blur-md` was removed from all three places in `Navbar.tsx`:
-- Main `<header>` solid state
-- Desktop dropdown panel
-- Mobile drawer
-
-The navbar now uses solid opaque backgrounds (`bg-[rgba(5,5,20,0.96)]`) without blur, which keeps it in the normal stacking order and allows `zIndex: 9999` on the overlay to correctly sit above it.
-
-> The hibrythia navbar uses `sticky` positioning and `backdrop-blur-sm` only — which doesn't cause the same compositing issue.
+> The hibrythia navbar uses `sticky` positioning — different approach, different rules file (`LoreImageRules.md` without the extra 's').
