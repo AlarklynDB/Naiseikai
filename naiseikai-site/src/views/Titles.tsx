@@ -84,6 +84,10 @@ type AnyTitle = {
   subtitle?: string
 }
 
+const titleCovers: Record<string, string> = {
+  tqctn: 'https://i.ibb.co/gMvLZcsh/BOok-Banner.png',
+}
+
 const titleRoutes: Record<string, string> = {
   tqctn: '/titles/KarasuToNinja-TQCTN',
   sorenaoane: '/titles/SorenaoAne-Nevertheless',
@@ -99,11 +103,17 @@ function TitleCard({ t }: { t: AnyTitle }) {
     <div className={cardClass}
       style={{ boxShadow: t.status === 'published' ? `0 0 20px rgba(0,229,255,0.08)` : undefined }}>
 
-      {/* IMAGE PLACEHOLDER — drop your cover art here */}
-      {/* TODO: replace div below with: <img src={`/titles/${t.id}.jpg`} alt={t.title} className="w-full h-full object-cover" /> */}
-      <div className="w-full aspect-[3/1] bg-[rgba(255,255,255,0.03)] border-b border-white/5 flex items-center justify-center">
-        <span className="text-[10px] font-mono text-text-faint opacity-50">/titles/{t.id}.jpg</span>
-      </div>
+      {titleCovers[t.id] ? (
+        <img
+          src={titleCovers[t.id]}
+          alt={t.title}
+          className="w-full h-auto object-cover border-b border-white/5"
+        />
+      ) : (
+        <div className="w-full aspect-[3/1] bg-[rgba(255,255,255,0.03)] border-b border-white/5 flex items-center justify-center">
+          <span className="text-[10px] font-mono text-text-faint opacity-50">/titles/{t.id}.jpg</span>
+        </div>
+      )}
 
       <div className="p-6">
         <div className="flex items-start justify-between gap-3 mb-3">
