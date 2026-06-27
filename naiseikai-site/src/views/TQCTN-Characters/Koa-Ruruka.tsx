@@ -2,15 +2,28 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-// ─── Shared helpers ───────────────────────────────────────────────────────────
-function ImgPlaceholder({ label, aspect = 'aspect-[3/4]' }: { label: string; aspect?: string }) {
+// ─── Character Art ────────────────────────────────────────────────────────────
+
+function KoaRurukaArt() {
   return (
-    <div className={`w-full ${aspect} bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 my-6`}>
-      <span className="text-3xl opacity-20">🖼</span>
-      <span className="text-[10px] font-mono text-text-faint opacity-50">{label}</span>
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/VY7Vxb9c/Character-Banner-Koa-Ruruka-2.png"
+        alt="Koa Ruruka"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
+      </div>
     </div>
   )
 }
+
+// ─── Shared helpers ───────────────────────────────────────────────────────────
 
 function Divider() {
   return <div className="section-divider my-8" />
@@ -59,7 +72,7 @@ function Breadcrumb() {
 function KoaRurukaTab() {
   return (
     <div className="space-y-8">
-      <ImgPlaceholder label="/characters/koa-ruruka.jpg" aspect="aspect-[3/4]" />
+      <KoaRurukaArt />
 
       <div>
         <span className="neon-sign-purple text-[10px] mb-3 inline-block">Main Character</span>
