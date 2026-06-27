@@ -80,12 +80,13 @@ function HanakoReinaTab() {
       </div>
 
       <HanakoReinaArt />
-      
+
         {/* Quote */}
         <blockquote className="border-l-2 border-[#7eb8ff]/40 pl-4 italic text-sm text-text-muted">
-          "My love burns like ice, even if it's hot</em>"
+          "My love burns like ice, <em>even if it's hot</em>"
         </blockquote>
 
+    
       <Divider />
 
       {/* General Info */}
