@@ -186,6 +186,21 @@ function HanakoReinaTab() {
         </div>
       </div>
 
+      {/* Powers & Abilities card */}
+      <Link
+        to="/titles/KarasuToNinja-TQCTN/Hanako-Reina/HanakoPowersAndAbilities"
+        className="block group neon-card border border-[#7ef5ff]/20 hover:border-[#7ef5ff]/50 transition-all duration-200"
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="font-mono text-[10px] text-text-faint mb-1 uppercase tracking-widest">Hanako Reina</p>
+            <h4 className="font-serif text-base text-[#7ef5ff] group-hover:text-white transition-colors">🪄 Powers &amp; Abilities</h4>
+            <p className="text-xs text-text-muted mt-1">Passive, neutral, physical, suppressed powers — and her Anchor Being status</p>
+          </div>
+          <span className="text-text-faint group-hover:text-[#7ef5ff] transition-colors font-mono text-sm shrink-0">→</span>
+        </div>
+      </Link>
+
       <Divider />
 
       {/* Age Biology & Anatomy */}
