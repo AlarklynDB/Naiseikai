@@ -4,6 +4,25 @@ import { Link } from 'react-router-dom'
 
 // ─── Character Art ────────────────────────────────────────────────────────────
 
+function HaruhiAoiEarsArt() {
+  return (
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/0yKPN8QM/Haruhi-s-Ears.png"
+        alt="The Anatomy of Haruhi's Ears"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
+      </div>
+    </div>
+  )
+}
+
 function HaruhiAoiArt() {
   return (
     <div
@@ -199,6 +218,7 @@ function HaruhiAoiTab() {
         <h3 className="font-serif text-lg text-text mb-4">The Anatomy of Haruhi's Ears</h3>
         <div className="space-y-3 text-sm text-text-muted leading-relaxed">
           <p>Haruhi, being a Yokai and a Shifter, her ears resemble that of a rabbit / bunny</p>
+          <HaruhiAoiEarsArt />
           <div className="neon-card">
             <p className="font-mono text-xs text-[#a8ff8a] mb-2">Patibilis Capillatura</p>
             <p>The top and bottom parts of her ears, also known as False Hair, are actual organs that help Haruhi pick up different sounds, frequencies, wavelengths and more. She can also pick up sounds like a dog whistle or a sinewave. They're that powerful.</p>
