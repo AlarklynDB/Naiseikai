@@ -45,11 +45,6 @@ export default function AsamiKurosePage() {
       <Breadcrumb />
       <div className="space-y-8">
 
-        {/* Quote */}
-        <blockquote className="border-l-2 border-[#7eb8ff]/40 pl-4 italic text-sm text-text-muted">
-          "Tension rises when unrequited love happens to be painful <em>like a bed of thorns</em>"
-        </blockquote>
-
         {/* Header */}
         <div>
           <span className="neon-sign text-[10px] mb-3 inline-block">Upcoming Character · TQCTN</span>
@@ -58,6 +53,11 @@ export default function AsamiKurosePage() {
         </div>
 
         <AsamiKuroseArt />
+
+        {/* Quote */}
+        <blockquote className="border-l-2 border-[#7eb8ff]/40 pl-4 italic text-sm text-text-muted">
+          "Tension rises when unrequited love happens to be painful <em>like a bed of thorns</em>"
+        </blockquote>
 
         <Divider />
 
