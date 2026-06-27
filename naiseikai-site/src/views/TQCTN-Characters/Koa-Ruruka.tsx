@@ -72,13 +72,13 @@ function Breadcrumb() {
 function KoaRurukaTab() {
   return (
     <div className="space-y-8">
-      <KoaRurukaArt />
-
       <div>
         <span className="neon-sign-purple text-[10px] mb-3 inline-block">Main Character</span>
         <h2 className="font-serif text-3xl text-[#d49fff] mb-1">Koa Ruruka</h2>
         <p className="text-text-faint font-mono text-sm italic">"She's the one. My one and only."</p>
       </div>
+
+      <KoaRurukaArt />
 
       <Divider />
 
