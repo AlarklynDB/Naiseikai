@@ -1438,19 +1438,7 @@ export default function TQCTN() {
           >
             All Characters
           </button>
-          {CHARACTER_TABS.map(({ key, label, color }) => (
-            <button
-              key={key}
-              onClick={() => setActiveTab(key)}
-              className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all border ${
-                activeTab === key
-                  ? `border-white/30 ${color} bg-[rgba(255,255,255,0.06)]`
-                  : 'border-white/10 text-text-faint hover:text-text-muted'
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+
         </div>
       )}
 
