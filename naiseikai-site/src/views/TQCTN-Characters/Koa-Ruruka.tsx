@@ -75,10 +75,14 @@ function KoaRurukaTab() {
       <div>
         <span className="neon-sign-purple text-[10px] mb-3 inline-block">Main Character</span>
         <h2 className="font-serif text-3xl text-[#d49fff] mb-1">Koa Ruruka</h2>
-        <p className="text-text-faint font-mono text-sm italic">"She's the one. My one and only."</p>
       </div>
 
       <KoaRurukaArt />
+      
+        {/* Quote */}
+        <blockquote className="border-l-2 border-[#7eb8ff]/40 pl-4 italic text-sm text-text-muted">
+          "She's the one. <em>My one and only.</em>"
+        </blockquote>
 
       <Divider />
 
