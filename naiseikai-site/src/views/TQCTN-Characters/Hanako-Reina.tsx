@@ -74,13 +74,13 @@ function HanakoReinaTab() {
   return (
     <div className="space-y-8">
 
-      <HanakoReinaArt />
-
       <div>
         <span className="neon-sign text-[10px] mb-3 inline-block">Main Character</span>
         <h2 className="font-serif text-3xl text-[#7ef5ff] mb-1">Hanako Reina</h2>
         <p className="text-text-faint font-mono text-sm italic">"My love burns like ice, even if it's hot"</p>
       </div>
+
+      <HanakoReinaArt />
 
       <Divider />
 
