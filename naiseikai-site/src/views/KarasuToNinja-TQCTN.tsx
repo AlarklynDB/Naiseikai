@@ -8,6 +8,25 @@ type Tab = 'overview' | 'characters' | 'characters-haruhi' | 'characters-ruruka'
 
 // ─── Image Placeholder ───────────────────────────────────────────────────────
 
+function TQCTNBookBanner() {
+  return (
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/gMvLZcsh/BOok-Banner.png"
+        alt="The Quiet Crow &amp; The Ninja — Book Banner"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
+      </div>
+    </div>
+  )
+}
+
 function ImgPlaceholder({ label, aspect = 'aspect-[3/4]' }: { label: string; aspect?: string }) {
   return (
     <div className={`w-full ${aspect} bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 my-6`}>
@@ -53,8 +72,8 @@ function OverviewTab() {
   return (
     <div className="space-y-10">
 
-      {/* Book Banner Placeholder */}
-      <ImgPlaceholder label="/titles/tqctn-banner.jpg" aspect="aspect-[3/1]" />
+      {/* Book Banner */}
+      <TQCTNBookBanner />
 
       {/* Title Block */}
       <div>
