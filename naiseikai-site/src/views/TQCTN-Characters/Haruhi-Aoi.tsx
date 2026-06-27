@@ -92,10 +92,14 @@ function HaruhiAoiTab() {
       <div>
         <span className="neon-sign-pink text-[10px] mb-3 inline-block">Main Character</span>
         <h2 className="font-serif text-3xl text-[#a8ff8a] mb-1">Haruhi Aoi</h2>
-        <p className="text-text-faint font-mono text-sm italic">"Think Bunnies! Soft….cute…and fluffy!"</p>
       </div>
 
       <HaruhiAoiArt />
+      
+        {/* Quote */}
+        <blockquote className="border-l-2 border-[#7eb8ff]/40 pl-4 italic text-sm text-text-muted">
+          "Think Bunnies! <em>Soft….cute…and fluffy!</em>"
+        </blockquote>
 
       <Divider />
 
