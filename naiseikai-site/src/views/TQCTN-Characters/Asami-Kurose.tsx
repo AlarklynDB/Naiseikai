@@ -1,5 +1,26 @@
 import { Link } from 'react-router-dom'
 
+// ─── Character Art ────────────────────────────────────────────────────────────
+
+function AsamiKuroseArt() {
+  return (
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative"
+    >
+      <img
+        src="https://i.ibb.co/bM1SpFm9/Character-Banner-Asami-Kurose.png"
+        alt="Asami Kurose"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
+      </div>
+    </div>
+  )
+}
+
 function Breadcrumb() {
   return (
     <nav className="flex items-center gap-2 text-xs font-mono text-text-faint mb-8 flex-wrap">
@@ -36,6 +57,8 @@ export default function AsamiKurosePage() {
           <p className="text-text-faint font-mono text-sm italic">朝美 黒瀬</p>
         </div>
 
+        <AsamiKuroseArt />
+
         <Divider />
 
         {/* Identity */}
@@ -45,10 +68,6 @@ export default function AsamiKurosePage() {
             {[
               { label: 'First Name', value: 'Asami' },
               { label: 'Last Name', value: 'Kurose' },
-              { label: 'Nickname(s)', value: 'Kuru or Rose' },
-              { label: 'By Haruhi', value: 'Asachii' },
-              { label: 'By Reina', value: 'Ami, sometimes Kuu-chan' },
-              { label: 'By Ruruka', value: '"Urosai-chan" (shut up slang)' },
               { label: 'Gender', value: 'Female' },
               { label: 'Yokai Race', value: 'Octoquid (Original) — Cursed w/ Snake Venom Blood' },
               { label: 'Age', value: '26' },
@@ -63,9 +82,16 @@ export default function AsamiKurosePage() {
             ))}
           </div>
 
-          {/* Aru's Nicknames */}
+          {/* Nicknames */}
           <div className="mt-4 neon-card text-sm text-text-muted space-y-1">
-            <p className="font-mono text-xs text-[#7eb8ff] mb-2">Aru's Nicknames for Asami!!!</p>
+            <p className="font-mono text-xs text-[#7eb8ff] mb-2">Nicknames</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Kuru or Rose (general)</li>
+              <li>Asachii — by Haruhi</li>
+              <li>Ami, sometimes Kuu-chan — by Reina</li>
+              <li>&quot;Urosai-chan&quot; (shut up slang) — by Ruruka</li>
+            </ul>
+            <p className="font-mono text-xs text-[#7eb8ff] mt-3 mb-2">Aru's Nicknames for Asami!!!</p>
             <p>Blue Lady by Little Aru, sometimes OctoGirl or Takoyaki. Kumo-Tako (Spider Octopus)</p>
             <p>Tako'don (Tako + Udon) !!! YES. ARU IS CALLING HER THAT.</p>
             <p>Super Emo Mommy #4</p>
