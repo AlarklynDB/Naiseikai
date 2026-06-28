@@ -86,6 +86,7 @@ type AnyTitle = {
 
 const titleCovers: Record<string, string> = {
   tqctn: 'https://i.ibb.co/gMvLZcsh/BOok-Banner.png',
+  gyakuten: 'https://i.ibb.co/Zp8vVVgQ/Gyaku-TEN-Book-Banner.png',
 }
 
 const titleRoutes: Record<string, string> = {
