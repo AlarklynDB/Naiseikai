@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://naiseikaiuniverse.com',
+  site: 'https://www.naiseikaiuniverse.com',
 
   // Static Site Generation — every route outputs real crawlable HTML.
   output: 'static',
