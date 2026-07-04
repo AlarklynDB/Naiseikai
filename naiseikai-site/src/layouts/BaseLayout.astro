@@ -97,6 +97,54 @@ const canonical = new URL(path, 'https://naiseikaiuniverse.com').href
 
     <title>{title}</title>
 
+    <!-- JSON-LD: Structured Data (naiseikai_schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.alarkiusej.com/#author"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.alarkiusej.com/#brand"
+        },
+        {
+          "@type": "CreativeWorkSeries",
+          "@id": "https://www.naiseikaiuniverse.com/#series",
+          "name": "The Naiseikai Universe",
+          "url": "https://www.naiseikaiuniverse.com/",
+          "description": "A Light Novel Universe and Connected Creative World created by Alarkius Elvya Jay.",
+          "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+          "author":    { "@id": "https://www.alarkiusej.com/#author" },
+          "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.naiseikaiuniverse.com/#website",
+          "url": "https://www.naiseikaiuniverse.com/",
+          "name": "The Naiseikai Universe",
+          "description": "The Official Website for The Naiseikai Universe created by Alarkius Elvya Jay.",
+          "about":     { "@id": "https://www.naiseikaiuniverse.com/#series" },
+          "creator":   { "@id": "https://www.alarkiusej.com/#author" },
+          "publisher": { "@id": "https://www.alarkiusej.com/#brand" }
+        },
+        {
+          "@type": "Book",
+          "@id": "https://www.naiseikaiuniverse.com/#book-1",
+          "name": "The Quiet Crow & The Ninja (Shizukana Karasu to Ninja)",
+          "bookEdition": ["First Edition", "Collector's Edition"],
+          "isbn": "9798994097656",
+          "numberOfPages": 294,
+          "inSeries": { "@id": "https://www.naiseikaiuniverse.com/#series" },
+          "author": { "@id": "https://www.alarkiusej.com/#author" },
+          "url": "https://www.naiseikaiuniverse.com/titles/KarasuToNinja-TQCTN"
+        }
+      ]
+    }
+    </script>
+
     <!-- Splash screen -->
     <style>
       html, body { background-color: #0d0b12; margin: 0; padding: 0; }
