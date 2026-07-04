@@ -124,7 +124,7 @@
         "bookEdition": "First Edition",
         "isbn": "9798994097687",
         "numberOfPages": 50,
-        "inSeries": { "@id": "https://www.thehibrythiansaga.com/#series" },
+        "isPartOf": { "@id": "https://www.thehibrythiansaga.com/#series" },
         "author": { "@id": "https://www.alarkiusej.com/#author" },
         "url": "https://www.thehibrythiansaga.com/bookshelf/vol0"
       }
@@ -135,7 +135,7 @@
         "bookEdition": "First Edition", "Hardcover",
         "isbn": "9798994097663", "9798994097670",
         "numberOfPages": 542,
-        "inSeries": { "@id": "https://www.thehibrythiansaga.com/#series" },
+        "isPartOf": { "@id": "https://www.thehibrythiansaga.com/#series" },
         "author": { "@id": "https://www.alarkiusej.com/#author" },
         "url": "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Hibrythian%20Saga"
       }
@@ -180,9 +180,10 @@
         "bookEdition": "First Edition", "Collector's Edition",
         "isbn": "9798994097656", "9798994097656",
         "numberOfPages": 294,
-        "inSeries": { "@id": "https://www.naiseikaiuniverse.com/#series" },
+        "isPartOf": { "@id": "https://www.naiseikaiuniverse.com/#series" },
         "author": { "@id": "https://www.alarkiusej.com/#author" },
         "url": "https://www.naiseikaiuniverse.com/titles/KarasuToNinja-TQCTN"
+        "url": "https://www.barnesandnoble.com/w/the-quiet-crow-the-ninja-alarkius-elvya-jay/1149627312?ean=9798994097656"
       }
     ]
   }
