@@ -54,4 +54,8 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+# --- Default ---
+User-agent: *
+Allow: /
+
 Sitemap: https://www.naiseikaiuniverse.com/sitemap-index.xml
