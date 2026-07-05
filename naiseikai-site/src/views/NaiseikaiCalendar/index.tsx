@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react'
 
 // ============================================================
 // The Naiseikai Calendar — Year 2100
-// Naiseikai Universe runs on standard Earth time. Calendar only:
-// no popups, no event tooltips, no timeline section.
+// Naiseikai Universe runs on standard Earth time. Calendar only
 // ============================================================
 
 type Month = {
