@@ -47,7 +47,10 @@ const PERSON_NODE = {
           "https://www.naiseikaiuniverse.com/",
           "https://www.barnesandnoble.com/search?q=Alarkius%20Elvya%20Jay&contributorName=alarkius-elvya-jay",
           "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Hibrythian%20Saga",
-          "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Naiseikai%20Universe",
+         "https://www.barnesandnoble.com/search?attributes.mfield_bnb__seriesTitle=The%20Naiseikai%20Universe",
+         "https://www.wikidata.org/wiki/Q140438474",
+         "https://www.wikidata.org/wiki/Q140438511",
+         "https://www.wikidata.org/wiki/Q140438394"
   ]
 };
 
