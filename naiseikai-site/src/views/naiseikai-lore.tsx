@@ -107,31 +107,28 @@ export default function NaiseikaiLore() {
         </Link>
       </div>
 
-      {/* ── Interactive Calendar Banner ───────────────────────────────────── */}
+      {/* ── The Naiseikai Calendar (description card) ────────────────────────── */}
       <div className="mb-10">
-        <Link to="/naiseikai-calendar" className="block group">
-          <div
-            className="border border-[rgba(191,95,255,0.35)] rounded-xl bg-[rgba(191,95,255,0.04)] hover:bg-[rgba(191,95,255,0.08)] transition-all duration-300 p-5 flex items-center justify-between gap-4"
-            style={{ boxShadow: "0 0 24px rgba(191,95,255,0.06)" }}
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[rgba(191,95,255,0.12)] border border-[rgba(191,95,255,0.25)] flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">🗓️</span>
-              </div>
-              <div>
-                <p className="font-serif text-base text-[#bf5fff] mb-0.5 group-hover:opacity-90 transition-opacity">
-                  Interactive Calendar
-                </p>
-                <p className="text-xs text-text-faint font-mono">
-                  Year 2100 — birthdays, holidays &amp; lore events across all 12 months
-                </p>
-              </div>
+        <div
+          className="border border-[rgba(191,95,255,0.35)] rounded-xl bg-[rgba(191,95,255,0.04)] p-5"
+          style={{ boxShadow: "0 0 24px rgba(191,95,255,0.06)" }}
+        >
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 rounded-lg bg-[rgba(191,95,255,0.12)] border border-[rgba(191,95,255,0.25)] flex items-center justify-center flex-shrink-0">
+              <span className="text-lg">🗓️</span>
             </div>
-            <span className="text-[#bf5fff] text-sm font-mono opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0">
-              →
-            </span>
+            <p className="font-serif text-base text-[#bf5fff]">
+              The Naiseikai Calendar
+            </p>
           </div>
-        </Link>
+          <p className="text-sm text-text-faint leading-relaxed">
+            Neo-Japan runs on a clean 365-day year split across twelve months — no leap days, ever.
+            Most months hold 31 or 30 days, with September breaking the pattern at 31 days to mark
+            where the story of TQCTN Book 1 truly begins. Birthdays, citywide holidays like Education
+            Day and Ujuukyō Founded, and key lore moments like Ayumi Kazehara's transformation are all
+            woven into specific dates across the year.
+          </p>
+        </div>
       </div>
 
       {/* ── Lore & Timeline Section Label ─────────────────────────────────── */}
