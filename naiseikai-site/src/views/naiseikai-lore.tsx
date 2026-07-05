@@ -124,7 +124,7 @@ export default function NaiseikaiLore() {
           <p className="text-sm text-text-faint leading-relaxed">
             Neo-Japan runs on a clean 365-day year split across twelve months — no leap days, ever.
             Most months hold 31 or 30 days, with September breaking the pattern at 31 days to mark
-            where the story of TQCTN Book 1 truly begins. Birthdays, citywide holidays like Education
+            where the beginning of the book, TQCTN (The Quiet Crow & The Ninja). Birthdays, citywide holidays like Education
             Day and Ujuukyō Founded, and key lore moments like Ayumi Kazehara's transformation are all
             woven into specific dates across the year.
           </p>
