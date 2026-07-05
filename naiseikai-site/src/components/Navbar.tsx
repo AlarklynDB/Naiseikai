@@ -8,7 +8,7 @@ const navLinks = [
     children: [
       { label: 'Universe Overview', path: '/universe' },
       { label: 'Lore & Timeline', path: '/world-lore-and-timeline' },
-      { label: 'Naiseikai Calendar', path: '/naiseikaicalendar' },
+      { label: 'Naiseikai Calendar', path: '/naiseikai-calendar' },
       { label: 'Power Scaling', path: '/power-scaling' },
     ],
   },
