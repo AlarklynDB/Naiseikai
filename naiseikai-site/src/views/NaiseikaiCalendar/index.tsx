@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react'
 
 // ============================================================
 // The Naiseikai Calendar — Year 2100
-// Adapted from the Hibrythia Saga's Hetranian Calendar concept
-// (32-16TimeSystem), Naiseikai edition. No custom clock — the
 // Naiseikai Universe runs on standard Earth time. Calendar only:
 // no popups, no event tooltips, no timeline section.
 // ============================================================
