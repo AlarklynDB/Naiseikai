@@ -55,7 +55,7 @@ export default function EducationInNeoJapan() {
       <SectionHeading>The Formation of Education</SectionHeading>
 
       <p className="text-base text-text-muted leading-relaxed mb-4">
-        On March 25th, 1675, Education in Neo Japan has formed to help understand how the entirety of the world works. Education in Neo-Japan goes up from 6 &gt; 3 &gt; 3 &gt; 5, with Y5 for Yokai University!
+        On March 25th, 1675, Education in Neo Japan has formed to help understand how the entirety of the world works. Education in Neo-Japan goes up from 6 &gt; 3 &gt; 3 &gt; 5, with YU5 for Yokai University!
       </p>
 
       <hr className="border-border my-4" />
@@ -106,7 +106,7 @@ export default function EducationInNeoJapan() {
       <p className="text-base text-text-muted leading-relaxed mb-4">
         Ninjas who work under the{' '}
         <Link to="/world-lore-and-timeline/the-world-of-neo-japan/ninja-yokai-association-quarters" className="underline" style={{ color: ACCENT }}>NYAQ</Link>{' '}
-        will have the option to opt in for remote classes, because the NYAQ also has their own education system that works in tandem for U5 and Y5.
+        will have the option to opt in for remote classes, because the NYAQ also has their own education system that works in tandem for U5 and YU5.
       </p>
 
       {/* ── Major Holiday / Season Closures ── */}
