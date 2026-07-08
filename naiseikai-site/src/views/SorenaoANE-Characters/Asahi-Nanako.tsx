@@ -80,36 +80,6 @@ export default function AsahiNanakoPage() {
 
         <Divider />
 
-        {/* Cast */}
-        <div>
-          <SectionTitle>Main Characters of SorenaoANE</SectionTitle>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { name: 'Asahi Nanako', path: '/titles/SorenaoAne-Nevertheless/Asahi-Nanako', active: true },
-              { name: 'Reiko Nanako', path: '/titles/SorenaoAne-Nevertheless/Reiko-Nozomi' },
-              { name: 'Shion Nozomi', path: '/titles/SorenaoAne-Nevertheless/Shion-Nanako' },
-              { name: 'Koharu Inoue', path: '/titles/SorenaoAne-Nevertheless/Koharu-Inoue' },
-              { name: 'Cyllvia April', path: '/titles/SorenaoAne-Nevertheless/Cyllvia-April' },
-            ].map(({ name, path, active }) => (
-              <Link
-                key={name}
-                to={path}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono border transition-colors ${active ? 'border-[#d49fff] text-[#d49fff] bg-[rgba(212,159,255,0.1)]' : 'border-white/10 text-text-faint hover:border-[#d49fff] hover:text-[#d49fff]'}`}
-              >
-                {name}
-              </Link>
-            ))}
-          </div>
-          <p className="text-xs text-text-faint mt-3">
-            Supporting Character / Cameo:{' '}
-            <Link to="/titles/KarasuToNinja-TQCTN/Haruhi-Aoi" className="text-[#7ab8f5] hover:underline">
-              Haruhi Aoi
-            </Link>
-          </p>
-        </div>
-
-        <Divider />
-
         {/* Backstory */}
         <div>
           <SectionTitle>Backstory</SectionTitle>
