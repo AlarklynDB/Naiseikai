@@ -220,6 +220,25 @@ export default function ShionNanakoPage() {
           </div>
         </div>
 
+
+        <div className="section-divider my-8" />
+
+        {/* Character Navigation */}
+        <div className="flex justify-between items-center pt-2">
+                  <Link
+            to="/titles/SorenaoAne-Nevertheless/Reiko-Nozomi"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
+          >
+            ← Reiko Nanako
+          </Link>
+                  <Link
+            to="/titles/SorenaoAne-Nevertheless/Koharu-Inoue"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
+          >
+            Koharu Inoue →
+          </Link>
+        </div>
+
       </div>
     </div>
   )
