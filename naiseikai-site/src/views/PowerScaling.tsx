@@ -30,7 +30,7 @@ const ranks: Rank[] = [
     subtitle: 'Inhuman / Non Human',
     color: 'green',
     description:
-      'Rank D elevates physical attributes beyond natural human limits. These individuals have developed — or were born with — a body that surpasses normal biology. Emotionally, their connection to power is instinctual rather than intentional. Capable of lifting weights limited to 200 heunix.',
+      'Rank D elevates physical attributes beyond natural human limits. These individuals have developed — or were born with — a body that surpasses normal biology. Emotionally, their connection to power is instinctual rather than intentional. Capable of lifting weights limited to 200 units.',
     subranks: [
       { rank: 'D-1', desc: 'Car Destruction' },
       { rank: 'D-2', desc: 'Appliance Damages' },
@@ -102,7 +102,7 @@ const ranks: Rank[] = [
       'Rank X beings have transcended individual emotional experience. Their feelings are no longer personal — they are universal. A moment of grief could restructure timelines. A surge of joy could seed galaxies. Divine Power, in Naiseikai, is the expression of emotions so vast they can no longer be contained by a single universe.',
     subranks: [
       { rank: 'X-1', desc: 'Hyperverse Level — emotional resonance reaches beyond dimensional boundaries' },
-      { rank: 'X-2', desc: 'Stellarkinesis — Galaxy Manipulation through sustained emotional projection' },
+      { rank: 'X-2', desc: 'Universe Manipulation of any scale - but only bound to certain ranges' },
       { rank: 'X-3', desc: 'Timeline creation and destruction. Universal and Multiversal scale — emotion as the axis of existence itself' },
     ],
   },
