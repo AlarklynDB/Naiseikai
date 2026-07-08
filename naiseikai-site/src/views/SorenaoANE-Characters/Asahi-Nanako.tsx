@@ -234,7 +234,7 @@ export default function AsahiNanakoPage() {
         <div className="flex justify-between items-center pt-2">
           <span />
                   <Link
-            to="/titles/SorenaoAne-Nevertheless/Reiko-Nozomi"
+            to="/titles/SorenaoAne-Nevertheless/Reiko-Nanako"
             className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
           >
             Reiko Nanako →
