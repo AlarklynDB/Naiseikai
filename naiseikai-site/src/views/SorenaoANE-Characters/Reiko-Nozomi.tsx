@@ -255,6 +255,25 @@ export default function ReikoNanakoPage() {
           </div>
         </div>
 
+
+        <div className="section-divider my-8" />
+
+        {/* Character Navigation */}
+        <div className="flex justify-between items-center pt-2">
+                  <Link
+            to="/titles/SorenaoAne-Nevertheless/Asahi-Nanako"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
+          >
+            ← Asahi Nanako
+          </Link>
+                  <Link
+            to="/titles/SorenaoAne-Nevertheless/Shion-Nanako"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
+          >
+            Shion Nozomi →
+          </Link>
+        </div>
+
       </div>
     </div>
   )
