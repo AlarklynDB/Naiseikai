@@ -307,7 +307,7 @@ function KoaRurukaTab() {
       <div>
         <h3 className="font-serif text-lg text-text mb-4">Appearance</h3>
         <div className="neon-card text-sm text-text-muted leading-relaxed">
-          <p>She has long purple-brown hair, her eyes, an amethyst like color. She's 167.64 cm tall (5'6)</p>
+          <p>She has mid neck length purple-brown hair, her eyes, an amethyst like color. She's 167.64 cm tall (5'6)</p>
           <p className="mt-2">Often wears her ninja clothing everywhere even to her jobs. She still likes to uphold her ninja status for legal reasons. But on her days off, she wears casual clothes.</p>
         </div>
       </div>
