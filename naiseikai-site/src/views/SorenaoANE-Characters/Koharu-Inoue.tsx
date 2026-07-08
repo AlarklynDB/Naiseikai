@@ -257,7 +257,7 @@ export default function KoharuInouePage() {
         {/* Character Navigation */}
         <div className="flex justify-between items-center pt-2">
                   <Link
-            to="/titles/SorenaoAne-Nevertheless/Shion-Nanako"
+            to="/titles/SorenaoAne-Nevertheless/Shion-Nozomi"
             className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-sm font-mono text-text-faint hover:border-[#d49fff] hover:text-[#d49fff] transition-colors"
           >
             ← Shion Nozomi
