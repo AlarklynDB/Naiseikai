@@ -1,4 +1,32 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+
+function CopyEmail() {
+  const [copied, setCopied] = useState(false)
+  const email = 'contact@alarkiusej.com'
+
+  function handleCopy() {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="inline-flex items-center gap-1.5 font-mono text-sm text-[#d49fff] hover:text-white transition-colors cursor-pointer group"
+      title="Click to copy"
+    >
+      <span className="underline underline-offset-2 decoration-[#d49fff]/40 group-hover:decoration-white/60 transition-colors">
+        {email}
+      </span>
+      <span className="text-xs text-[#d49fff]/60 group-hover:text-[#d49fff] transition-colors">
+        {copied ? '✓ copied!' : '⎘'}
+      </span>
+    </button>
+  )
+}
 
 export default function Songbook() {
   return (
@@ -20,10 +48,11 @@ export default function Songbook() {
         <div className="callout callout-purple">
           <div>
             <p className="text-sm font-mono text-[#d49fff] mb-1">🎵 Songbook — Currently Developing</p>
-            <p className="text-sm text-text-muted leading-relaxed">
+            <p className="text-sm text-text-muted leading-relaxed mb-2">
               The Naiseikai Songbook is being curated. Music, compositions, and thematic tracks for each title
-              will be catalogued here. Want to collaborate and make these lyrics come alive? Contact the author!: contact@alarkiusej.com
+              will be catalogued here. Want to collaborate and make these lyrics come alive? Contact the author!:
             </p>
+            <CopyEmail />
           </div>
         </div>
       </section>
