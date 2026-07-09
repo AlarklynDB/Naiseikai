@@ -59,7 +59,7 @@ const ALL_CHARACTERS = [
     titleShort: 'SorenaoANE',
     role: 'Main Character',
     color: '#d49fff',
-    route: '/titles/SorenaoAne-Nevertheless/Reiko-Nozomi',
+    route: '/titles/SorenaoAne-Nevertheless/Reiko-Nanako',
   },
   {
     name: 'Shion Nozomi',
@@ -67,7 +67,7 @@ const ALL_CHARACTERS = [
     titleShort: 'SorenaoANE',
     role: 'Main Character',
     color: '#d49fff',
-    route: '/titles/SorenaoAne-Nevertheless/Shion-Nanako',
+    route: '/titles/SorenaoAne-Nevertheless/Shion-Nozomi',
   },
   {
     name: 'Koharu Inoue',
