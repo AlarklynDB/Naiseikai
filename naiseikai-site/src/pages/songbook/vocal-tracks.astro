@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import View from "../../views/songbook/VocalTracks/index"
+---
+
+<BaseLayout
+  title={"Vocal Tracks | Songbook | The Naiseikai Universe"}
+  description={"Vocal songs and lyrics from the Naiseikai Universe."}
+  path={"/songbook/vocal-tracks"}
+>
+  <View client:load />
+</BaseLayout>
