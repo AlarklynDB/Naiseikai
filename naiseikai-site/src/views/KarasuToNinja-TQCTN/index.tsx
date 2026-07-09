@@ -346,6 +346,8 @@ function CharactersIndex() {
       </div>
     </div>
   )
+}
+
 // ─── Main TQCTN Page ──────────────────────────────────────────────────────────
 
 const TOP_TABS: { key: 'overview' | 'characters'; label: string }[] = [
