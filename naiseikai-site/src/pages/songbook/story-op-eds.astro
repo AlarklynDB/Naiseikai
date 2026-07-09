@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import View from "../../views/songbook/StoryOPandED/index"
+---
+
+<BaseLayout
+  title={"Story OP/EDs | Songbook | The Naiseikai Universe"}
+  description={"Story openings and endings across all Naiseikai titles."}
+  path={"/songbook/story-op-eds"}
+>
+  <View client:load />
+</BaseLayout>
