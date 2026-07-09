@@ -68,11 +68,12 @@ export default function Songbook() {
             { icon: '📖', title: 'Story OP/EDs', desc: 'Music that plays in the background of key story moments across all titles.', to: '/songbook/story-op-eds' },
             { icon: '🎙️', title: 'Vocal Tracks', desc: 'Songs with lyrics that reflect the themes of introspection, found family, and love.', to: '/songbook/vocal-tracks' },
           ].map((item) => (
-            <Link key={item.title} to={item.to} className="neon-card flex gap-3 hover:border-white/20 transition-colors">
+            <Link key={item.title} to={item.to} className="neon-card flex gap-3 hover:border-white/20 transition-colors group">
               <span className="text-2xl flex-shrink-0">{item.icon}</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-serif text-base mb-1 text-text">{item.title}</p>
-                <p className="text-sm text-text-muted leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-text-muted leading-relaxed mb-2">{item.desc}</p>
+                <p className="text-[10px] font-mono text-[#d49fff]/60 group-hover:text-[#d49fff] transition-colors">Click to explore →</p>
               </div>
             </Link>
           ))}
