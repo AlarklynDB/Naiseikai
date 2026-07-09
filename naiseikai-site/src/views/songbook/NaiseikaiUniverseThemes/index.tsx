@@ -10,6 +10,17 @@ function Breadcrumb() {
   )
 }
 
+const SONGS = [
+  {
+    num: '01',
+    title: 'You Can\'t Spell "Hope" without "Oops"',
+    sub: '「希望」には「失敗」が隠れてる',
+    voice: 'Little Bunny Aru',
+    style: 'Upbeat · Medium · J-Pop',
+    to: '/songbook/naiseikai-universe-themes/YouCantSpellHopeWithoutOops',
+  },
+]
+
 export default function NaiseikaiUniverseThemes() {
   return (
     <div className="page-container">
@@ -25,11 +36,27 @@ export default function NaiseikaiUniverseThemes() {
 
       <div className="section-divider mb-10" />
 
-      <div className="callout callout-purple">
-        <p className="text-sm font-mono text-[#d49fff] mb-1">🌃 Coming Soon</p>
-        <p className="text-sm text-text-muted leading-relaxed">
-          Naiseikai Universe Themes are being composed. Check back soon for ambient soundscapes and world music.
-        </p>
+      <div className="space-y-4">
+        {SONGS.map((song) => (
+          <Link
+            key={song.title}
+            to={song.to}
+            className="neon-card flex gap-4 items-start hover:border-white/20 transition-colors group"
+          >
+            <span className="font-mono text-xs text-[#d49fff]/60 pt-0.5 flex-shrink-0">{song.num}</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-serif text-base text-text group-hover:text-[#d49fff] transition-colors mb-0.5">
+                {song.title}
+              </p>
+              <p className="font-mono text-xs text-text-faint mb-2">{song.sub}</p>
+              <div className="flex flex-wrap gap-3 text-[10px] font-mono text-text-faint">
+                <span>🎤 {song.voice}</span>
+                <span>🎵 {song.style}</span>
+              </div>
+            </div>
+            <span className="text-xs text-text-faint group-hover:text-[#d49fff] transition-colors flex-shrink-0 pt-0.5">→</span>
+          </Link>
+        ))}
       </div>
 
       <div className="section-divider mt-12" />
