@@ -10,7 +10,7 @@ function Breadcrumb() {
       <span>/</span>
       <Link to="/titles/DuraDekiruKoi-Dullahan" className="hover:text-[#00e5ff] transition-colors">Characters</Link>
       <span>/</span>
-      <span className="text-[#ffaad4]">Amane Hinoka</span>
+      <span className="text-[#ffaad4]">Hinoka Amane</span>
     </nav>
   )
 }
@@ -29,7 +29,7 @@ export default function HinokaAmanePage() {
         {/* Header */}
         <div>
           <span className="neon-sign-pink text-[10px] mb-3 inline-block">Main Character</span>
-          <h2 className="font-serif text-3xl text-[#ffaad4] mb-1">👥 Amane, Hinoka | 火乃香 天音</h2>
+          <h2 className="font-serif text-3xl text-[#ffaad4] mb-1">👥 Hinoka Amane | 火乃香 天音</h2>
           <p className="text-text-faint font-mono text-sm italic">Can this Dullahan fall in Love? (Vol 1)</p>
         </div>
 
@@ -97,6 +97,45 @@ export default function HinokaAmanePage() {
           <h3 className="font-serif text-lg text-text mb-4">Personality</h3>
           <div className="callout text-sm text-text-muted leading-relaxed">
             <p>Full of energy, flame, and fire (she's a fire birb). She can be a klutz at times. Airhead energy when she needs. But her personality was molded when Kori Yukino came into her life. Highly intelligent. College not needed. Emotionally dense. Physically short.</p>
+          </div>
+        </div>
+
+        <Divider />
+
+        {/* The Four Identities */}
+        <div>
+          <h3 className="font-serif text-lg text-text mb-1">The Four Identities</h3>
+          <p className="font-mono text-xs text-text-faint mb-5">Hinoka Amane</p>
+          <div className="space-y-4">
+
+            <div className="neon-card border-l-2 border-[#ffaad4]/50">
+              <p className="font-mono text-xs text-[#ffaad4] mb-2">The Social Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Fire Birb. In the neon-dappled streets of Neo-Hokkaido, she is a high-energy klutz with orange eyes that sparkle like cheap fireworks. She plays the part of the eccentric shrine maiden who eats ice cream in the snow and accidentally blasts magic at the sky when she gets too excited. People see a charismatic airhead, a girl who integrated a bit too well into a society that doesn't believe in myths anymore. She is the light. She is the distraction.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#ffaad4]/50">
+              <p className="font-mono text-xs text-[#ffaad4] mb-2">The Personal Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Warming Hearth. When she is alone with Kōri, the fire becomes something different. It is soft. It is domestic. She is a girl who wants to be carried and a girl who wants to touch Kōri's blue flame just to feel a cold that makes sense. With Kōri, she isn't an heir or a survivor. She is just Hinoka, a girl who likes long socks and quiet mornings. This is the only place where her smile isn't a performance.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#ffaad4]/50">
+              <p className="font-mono text-xs text-[#ffaad4] mb-2">The Core Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Flickering Ember. Deep down, Hinoka is exhausted. The core of her being is a void where a sky castle used to be. She is emotionally dense because she has to be. If she lets the weight of her lineage in, she might stop breathing. She views her body not as a divine vessel, but as a battery that is slowly losing its charge. She is a girl waiting for the end, trying to find beauty in the quiet before the flame finally goes out.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#ffaad4]/50">
+              <p className="font-mono text-xs text-[#ffaad4] mb-2">The Hidden Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Supernova of Grief. This is the girl who decimated the Hydra Serpents on Christmas Eve. Behind the Jade Talisman lies a pressure cooker of absolute, unadulterated rage. When the necklace breaks, the "Sun's Flame" isn't a metaphor anymore. It is a terrifying, bionic-level force of nature that decimates everything in its path. Her hidden self is a graveyard of everyone she lost, a silent scream that could level Neo-Hokkaido if Kōri wasn't there to hold her hand.
+              </p>
+            </div>
+
           </div>
         </div>
 
@@ -187,13 +226,13 @@ export default function HinokaAmanePage() {
 
       <div className="mt-12 section-divider" />
       <div className="flex justify-between items-center gap-4 flex-wrap mt-6">
-        <div>
-          <Link to="/titles/DuraDekiruKoi-Dullahan/Kori-Yukino" className="btn-neon-cyan text-xs">← Kori Yukino</Link>
-        </div>
+        <div />
         <Link to="/titles/DuraDekiruKoi-Dullahan" className="text-xs font-mono text-text-faint hover:text-text transition-colors">
           ↑ All Characters
         </Link>
-        <div />
+        <div>
+          <Link to="/titles/DuraDekiruKoi-Dullahan/Kori-Yukino" className="btn-neon-cyan text-xs">Kori Yukino →</Link>
+        </div>
       </div>
     </div>
   )
