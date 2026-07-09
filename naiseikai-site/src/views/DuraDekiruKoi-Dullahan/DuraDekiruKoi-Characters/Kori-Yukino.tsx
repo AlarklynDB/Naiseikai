@@ -29,7 +29,7 @@ export default function KoriYukinoPage() {
         {/* Header */}
         <div>
           <span className="neon-sign text-[10px] mb-3 inline-block">Main Character</span>
-          <h2 className="font-serif text-3xl text-[#7ef5ff] mb-1">👥 Yukino, Kōri | 雪乃, 氷焔</h2>
+          <h2 className="font-serif text-3xl text-[#7ef5ff] mb-1">👥 Kōri Yukino | 雪乃, 氷焔</h2>
           <p className="text-text-faint font-mono text-sm italic">Can this Dullahan fall in Love? (Vol 1)</p>
         </div>
 
@@ -113,6 +113,45 @@ export default function KoriYukinoPage() {
 
         <Divider />
 
+        {/* The Four Identities */}
+        <div>
+          <h3 className="font-serif text-lg text-text mb-1">The Four Identities</h3>
+          <p className="font-mono text-xs text-text-faint mb-5">Kōri Yukino</p>
+          <div className="space-y-4">
+
+            <div className="neon-card border-l-2 border-[#7ef5ff]/50">
+              <p className="font-mono text-xs text-[#7ef5ff] mb-2">The Social Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Eternal Traveler. Kōri is the girl in the sparkly blue dress who knows all the best lofi playlists and manga chapters. She plays the role of the silly, energetic 25-year-old perfectly. Most people just see a lovable girl with cool hair and a weirdly regal way of standing. She socializes when she feels like it and retreats when she doesn't. She is the fun stranger you meet at a snowy bus stop and never forget.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#7ef5ff]/50">
+              <p className="font-mono text-xs text-[#7ef5ff] mb-2">The Personal Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Anchored Soul. With Hinoka, Kōri's blue flame burns steady. She isn't just a traveler anymore; she is a protector. She is the one who keeps her back straight so Hinoka has something to lean on. She shares her stories of the Edo Era not as history lessons, but as comfort. She is the ice that prevents the phoenix from burning herself alive. This is where her "energetic" front settles into a deep, nurturing devotion.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#7ef5ff]/50">
+              <p className="font-mono text-xs text-[#7ef5ff] mb-2">The Core Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Observer of Time. Kōri's core is 450 years of silence. She has watched empires rise and neon lights replace candles. She is ancient and stoic, possessing a calm that only comes from outliving everyone you've ever known. She views her own body—with its detachable head and blue-fire neck—as a simple tool of survival. She is wise in a way that makes her feel disconnected from the "now," a ghost who decided to stop wandering and finally plant roots.
+              </p>
+            </div>
+
+            <div className="neon-card border-l-2 border-[#7ef5ff]/50">
+              <p className="font-mono text-xs text-[#7ef5ff] mb-2">The Hidden Self</p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                The Relentless Guardian. Behind the soft smiles and "silly" quirks is the warrior who survived the 1600s. Her hidden self is a machine of martial precision. She doesn't carry weapons, but she doesn't need to. Her blue flame is a cold, lethal executioner's edge when Hinoka is threatened. She carries the burden of four centuries of memories, and the fear that, like everyone else she has ever loved, Hinoka will eventually leave her behind in the snow.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <Divider />
+
         {/* Hobbies & Likes */}
         <div>
           <h3 className="font-serif text-lg text-text mb-4">Hobbies &amp; Likes</h3>
@@ -166,7 +205,7 @@ export default function KoriYukinoPage() {
               <p>Heterochromatic Sea Blue and Ice Blue</p>
             </div>
             <div className="neon-card text-sm text-text-muted">
-              <p className="font-mono text-xs text-[#7ef5ff] mb-2">👀 Neck Accessory:</p>
+              <p className="font-mono text-xs text-[#7ef5ff] mb-2">🔗 Neck Accessory:</p>
               <p>She wears a collar made of magic and metal that allows her to detach/attach her head when she wants. Like a switch. Nothing too edgy. Just plain and simple.</p>
             </div>
             <div className="neon-card text-sm text-text-muted">
@@ -189,13 +228,13 @@ export default function KoriYukinoPage() {
 
       <div className="mt-12 section-divider" />
       <div className="flex justify-between items-center gap-4 flex-wrap mt-6">
-        <div />
+        <div>
+          <Link to="/titles/DuraDekiruKoi-Dullahan/Hinoka-Amane" className="btn-neon-cyan text-xs">← Hinoka Amane</Link>
+        </div>
         <Link to="/titles/DuraDekiruKoi-Dullahan" className="text-xs font-mono text-text-faint hover:text-text transition-colors">
           ↑ All Characters
         </Link>
-        <div>
-          <Link to="/titles/DuraDekiruKoi-Dullahan/Hinoka-Amane" className="btn-neon-cyan text-xs">Hinoka Amane →</Link>
-        </div>
+        <div />
       </div>
     </div>
   )
