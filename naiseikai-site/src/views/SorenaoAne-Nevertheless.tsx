@@ -995,7 +995,7 @@ const CHARACTER_TABS: { key: Tab; label: string; color: string }[] = [
 const CHARACTER_ROUTES: Record<string, string> = {
   'characters-asahi': '/titles/SorenaoAne-Nevertheless/Asahi-Nanako',
   'characters-reiko': '/titles/SorenaoAne-Nevertheless/Reiko-Nozomi',
-  'characters-shion': '/titles/SorenaoAne-Nevertheless/Shion-Nanako',
+  'characters-shion': '/titles/SorenaoAne-Nevertheless/Shion-Nozomi',
   'characters-koharu': '/titles/SorenaoAne-Nevertheless/Koharu-Inoue',
   'characters-cyllvia': '/titles/SorenaoAne-Nevertheless/Cyllvia-April',
 }
