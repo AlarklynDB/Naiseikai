@@ -22,7 +22,7 @@ export default function Songbook() {
             <p className="text-sm font-mono text-[#d49fff] mb-1">🎵 Songbook — Coming Soon</p>
             <p className="text-sm text-text-muted leading-relaxed">
               The Naiseikai Songbook is being curated. Music, compositions, and thematic tracks for each title
-              will be catalogued here. Check back soon — or follow Alarkius EJ's music channels for updates.
+              will be catalogued here. Want to collaborate and make these lyrics come alive? Contact the author!: contact@alarkiusej.com
             </p>
           </div>
         </div>
