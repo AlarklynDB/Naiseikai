@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import View from "../../views/songbook/CharacterThemes/index"
+---
+
+<BaseLayout
+  title={"Character Themes | Songbook | The Naiseikai Universe"}
+  description={"Original character compositions for the Naiseikai Universe."}
+  path={"/songbook/character-themes"}
+>
+  <View client:load />
+</BaseLayout>
