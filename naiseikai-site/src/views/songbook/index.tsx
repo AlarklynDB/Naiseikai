@@ -19,7 +19,7 @@ export default function Songbook() {
         <div className="section-divider" />
         <div className="callout callout-purple">
           <div>
-            <p className="text-sm font-mono text-[#d49fff] mb-1">🎵 Songbook — Coming Soon</p>
+            <p className="text-sm font-mono text-[#d49fff] mb-1">🎵 Songbook — Currently Developing</p>
             <p className="text-sm text-text-muted leading-relaxed">
               The Naiseikai Songbook is being curated. Music, compositions, and thematic tracks for each title
               will be catalogued here. Want to collaborate and make these lyrics come alive? Contact the author!: contact@alarkiusej.com
