@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom'
 
-// ─── Shared helpers ───────────────────────────────────────────────────────────
-function ImgPlaceholder({ label, aspect = 'aspect-[3/4]' }: { label: string; aspect?: string }) {
+// ─── Banner art ───────────────────────────────────────────────────────────────
+function LittleBunnyAruArt() {
   return (
-    <div className={`w-full ${aspect} bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 my-6`}>
-      <span className="text-3xl opacity-20">🖼</span>
-      <span className="text-[10px] font-mono text-text-faint opacity-50">{label}</span>
+    <div
+      data-magnify
+      className="w-full rounded-xl overflow-hidden border border-white/10 cursor-zoom-in relative my-6"
+    >
+      <img
+        src="https://i.ibb.co/d457rjZf/Character-Banner-Aru.png"
+        alt="Little Bunny Aru character banner"
+        className="w-full h-auto object-cover select-none"
+        draggable={false}
+      />
+      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/30 tracking-widest uppercase pointer-events-none">
+        scroll to zoom · drag to pan
+      </div>
     </div>
   )
 }
 
-// ─── Section divider ─────────────────────────────────────────────────────────
-
+// ─── Shared helpers ───────────────────────────────────────────────────────────
 function Divider() {
   return <div className="section-divider my-8" />
 }
 
-
-// ─── Overview Tab ────────────────────────────────────────────────────────────
-
-
 // ─── Breadcrumb ───────────────────────────────────────────────────────────────
-
 function Breadcrumb() {
   return (
     <nav className="flex items-center gap-2 text-xs font-mono text-text-faint mb-8 flex-wrap">
@@ -40,7 +44,7 @@ function Breadcrumb() {
 function LittleBunnyAruTab() {
   return (
     <div className="space-y-8">
-      <ImgPlaceholder label="/characters/little-bunny-aru.png" aspect="aspect-[3/4]" />
+      <LittleBunnyAruArt />
 
       <div>
         <span className="neon-sign neon-sign-pink text-[10px] mb-3 inline-block">Main Character</span>
@@ -167,11 +171,7 @@ function LittleBunnyAruTab() {
   )
 }
 
-// ─── Asami Kurose ─────────────────────────────────────────────────────────────
-
-
 // ─── Page wrapper ─────────────────────────────────────────────────────────────
-
 export default function LittleBunnyAruPage() {
   return (
     <div className="page-container">
