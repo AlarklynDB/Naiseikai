@@ -46,7 +46,7 @@ export default function TheSixPrimordialEmpresses() {
         <span>/</span>
         <Link to="/world-lore-and-timeline/the-world-of-neo-japan" className="hover:text-[#00e5ff] transition-colors">The World of Neo-Japan</Link>
         <span>/</span>
-        <span style={{ color: ACCENT }}>The Six Primordial Empresses</span>
+        <span style={{ color: ACCENT }}>The Six Primordial Empresses of Year 0-4</span>
       </nav>
 
       {/* Header */}
