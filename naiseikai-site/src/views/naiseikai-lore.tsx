@@ -144,7 +144,8 @@ export default function NaiseikaiLore() {
         {/* Card 1 — Overview */}
         <TimelineCard icon="📖" title="Overview" accentColor="#d49fff">
           <p>The Lore Timeline for the Naisei-Kai Universe, its history, and also stories! Since the Worldbuilding Genres here are: Sci-Fi, Urban Fantasy, Supernatural, and Alternate History, the entire earth is now labeled in this world as <strong className="text-text">Alt-Earth.</strong></p>
-          <p>A chronological compilation of key character birthdays, lore events, and mystical timestamps across the interconnected stories of:</p>
+          <p className="font-serif text-base text-[#d49fff]">Naisei-Kai Universe – Master Lore Timeline, Worldbuilding, and Birthdates</p>
+          <p>A chronological compilation of key character birthdays, lore events, and mystical timestamps across the interconnected stories of (and more):</p>
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>Shizukana Karasu to Ninja (SKTN)</li>
             <li>Nevertheless, You're Still My Sister! (SorenaoAne)</li>
@@ -156,37 +157,59 @@ export default function NaiseikaiLore() {
         {/* Card 2 — Primordial & Foundational */}
         <TimelineCard icon="🌑" title="Primordial & Foundational Timeline" accentColor="#ffd080">
           <div>
-            <EraLabel color="#ffd080">Year 0</EraLabel>
-            <p>The Naisei-Kai Universe begins.</p>
+            <EraLabel color="#ffd080">Year 0 · The Six Primordial Empresses Era</EraLabel>
+            <p className="text-xs text-text-faint italic mb-1">(Roku-ri no Hajime-gen no jotei | 六人の始源の女帝)</p>
+            <p>The Naiseikai Universe begins. The Six Primordial Empresses govern over the concept of aliveness and life itself. These Empresses came into being during Year 0 - 4 AD due to the collective will of humans alike (made sentient as manifestations and belief).</p>
+            <p className="mt-2 text-[#ffd080] font-mono text-xs">─────⊰ The Six Empresses</p>
+            <ul className="list-none mt-2 space-y-1">
+              <li>• New Year's Eve: Year 0 - The Empress of Life &amp; Death, Seitoshi-hime-sama (生と死ー姫ー様)</li>
+              <li>• March 23rd, Year 1 - The Empress of Nature, Hanahime-sama manifested. (花姫ー様).</li>
+              <li>• May 18th, Year 2 - The Empress of The Sun, Honōhime-sama manifested. (炎姫ー様) - this is where Phoenixes came from.</li>
+              <li>• July 23rd, Year 3 - The Empress of Dragons, Hageshíhime-sama (激しい姫ー様). This is where the line of Dragon/kins come from.</li>
+              <li>• August 4th, Year 3 - The Empress of Angels, Tenshi-hime-sama (天使ー姫ー様). Where Angels come from.</li>
+              <li>• Year 4 - The Empress of Beasts, Kemonohime-sama (獣姫ー様). This is where the Yokai era started, near the end of the year.</li>
+            </ul>
+            <p className="mt-2">The Six Empresses convened together in May 5, 050 AD to form a Full Goddess that triumphs over The Six, Ujuu-sama, a full deity. The Six did it with their powers combined together. Ujuu-sama embodies the Cosmic Faith of Silence and Gentleness, which is what shaped The Religion of Ujuukyō. You could say The Six gave birth to Ujuu-sama, despite Ujuu-sama who considers them as her daughters.</p>
           </div>
           <div>
             <EraLabel color="#ffd080">Year 5 — 1599 · The Great Yokai Descent</EraLabel>
-            <p>Appearance of Yokai and Supernatural beings begins to show in Ancient Japan. It's not just Japan though — Yokai began to show up around the world!</p>
+            <ul className="list-none mt-1 mb-2 space-y-0.5">
+              <li>• <Link to={`${BASE}/neo-japan-techno-geography`} className={LINK}>NEO-Japan's Techno Geography</Link></li>
+              <li>• <Link to={`${BASE}/neo-japan-prefectures`} className={LINK}>NEO-Japan's Prefectures</Link></li>
+              <li>• <Link to={`${BASE}/yokai-citizens-of-neo-japan`} className={LINK}>Yokai Citizens of Neo-Japan</Link></li>
+            </ul>
+            <p>Appearance of Yokai and Supernatural beings begins to show in Ancient Japan. This includes Spirit Goddess (精霊の女神 Seirei no megami). Spirit Goddesses began to show up around these years (like Ayumi Kazehara, who appeared in the year 2000).</p>
+            <p>It's not just Japan though. Yokai began to show up around the world!</p>
             <ul className="list-none mt-2 space-y-2">
-              <li>• <span className="text-[#d4a96a]"><Link to={`${BASE}/religion-of-ujuukyo#yokai-relinquishment`} className={LINK}>Yokai Relinquishment</Link></span> — A dangerous powerful act for Yokai Shrines. It takes away the yokai status, powers, and the ability to change into their yokai counterparts, turning them into a human. But the cost? Emotions are taken away. Only for a vessel to walk adrift across the Earth. The only place to do this is at Tenshi Shima (Angel Island) and Ryuu no Shima (Dragon Island). This act is more of a forced relinquishment for yokais who have committed atrocities. Total Relinquishment must be done through Ujuukyo Practices.</li>
-              <li>• <span className="text-[#ffd080]">May 05, 050</span> AD — <strong className="text-text"><Link to={`${BASE}/religion-of-ujuukyo`} className={LINK}>The Religion of Ujuukyō forms.</Link></strong></li>
-              <li>• <span className="text-[#d4a96a]">Sept 18th, 1465</span> — Japan Imperialists and Immigrants (500k of them) traverse the world to spread their Japanese influence to different cultures. On September 18th, The Japanese Language has been immortalized worldwide. Japanese is now the main native language. This is now regarded as a National Holiday.</li>
+              <li>• <span className="text-[#d4a96a]"><Link to={`${BASE}/religion-of-ujuukyo#yokai-relinquishment`} className={LINK}>Yokai Relinquishment</Link></span> — It is a dangerous powerful act for Yokai Shrines. What this does is that it takes away the yokai status, powers, and the ability to change into their yokai counterparts. It turns them into a human. But the cost? Emotions are taken away. Only for a vessel to walk adrift across the Earth. The only place to do this is at Tenshi Shima (Angel Island) and Ryuu no Shima (Dragon Island). This act is more of a forced relinquishment for yokais who have committed atrocities. Total Relinquishment must be done through Ujuukyo Practices.</li>
+              <li>• <span className="text-[#ffd080]">May 05, 050</span> AD — <strong className="text-text"><Link to={`${BASE}/religion-of-ujuukyo`} className={LINK}>The Religion of Ujuukyō forms</Link></strong> (Holiday). The Birth of Ujuu-sama.</li>
+              <li>• <span className="text-[#d4a96a]">Sept 18th, 1465</span> — Japan Imperialists and Immigrants (500k of them) traverse the world to spread their Japanese influence to different cultures. On September 18th, The Japanese Language has been immortalized worldwide. Japanese is now the main native language. This is now regarded as a National Holiday.
+                <ul className="list-none mt-2 ml-4 space-y-1">
+                  <li>◦ In China, however, it's Chinese languages (along with the other four) are still preserved but very rare. Japan recognizes that they share similarities to China Culture, so that's why they kept some of their languages preserved. There is Japanese-Chinese (Hybridized form), Mandarin (Putonghua) and Cantonese (Yue). The other four languages, Wu, Min, Hakka, along with Gan &amp; Xiang are SUPER rare to find in China.</li>
+                  <li>◦ English is also rare nowadays.</li>
+                </ul>
+              </li>
             </ul>
           </div>
           <div>
             <EraLabel color="#ffd080">1600 · Yokai-Edo Japan Era Begins</EraLabel>
             <p><span className="text-[#ffd080]">Jan 7th, 1650</span> — Kori Yukino is born from a line of Dullahans, Warriors, and Martial Artists (DuraDekiruKoi)</p>
-            <p>March 25th, 1675 — <Link to={`${BASE}/education-in-neo-japan`} className={LINK}>Education in Neo Japan has been Formed.</Link></p>
+            <p>March 25th, 1675 — <Link to={`${BASE}/education-in-neo-japan`} className={LINK}>Education in Neo Japan has been Formed</Link> (Holiday)</p>
           </div>
           <div>
             <EraLabel color="#d49fff">1700 · The Yokai &amp; Human Coalition Act (YHCA)</EraLabel>
             <p>A formal agreement that integrates both societies in balance.</p>
             <ul className="list-none mt-2 space-y-2">
-              <li>• <span className="text-[#d4a96a]"><Link to={`${BASE}/yhca-yokaihuman-coalition-act`} className={LINK}>The Y&amp;H Coalition Act</Link></span> — The YHCA was formed exactly on 1700. Yokai cannot kill or murder humans because it is illegal, even if it's the other way around. It's about moral laws and ambiguity between parties. However, it is NOT illegal for Yokai to kill Yokai. It has been a tradition since the early yokai settlements from Year 5 - 1599.</li>
-              <li>• <Link to={`${BASE}/yokai-association-recovery-center`} className={LINK}>The Yokai Association Recovery Center (YARC)</Link> — Formed in 1779 AD by the YHCA. The YARC rehabilitates repeat offenders into making them relive their past errors so that they can make up for it.</li>
-              <li>• <Link to={`${BASE}/ninja-yokai-association-quarters`} className={LINK}>The Ninja Yokai Association Quarters (NYAQ)</Link> — Formed in 1795 by the YHCA. There are a lot of yokai and humans who band together to become Ninjas through wealth, fame, and mercenaries.</li>
+              <li>• <span className="text-[#d4a96a]"><Link to={`${BASE}/yhca-yokaihuman-coalition-act`} className={LINK}>The Y&amp;H Coalition Act</Link></span> — The YHCA was formed exactly on 1700. Yokai cannot kill or murder humans because it is illegal, even if it's the other way around. It's about moral laws and ambiguity between parties. There are a lot of Yokai when the appeared, which upsets the balance of humans. So together, both outstanding leaders of these parties banded together to form this act. However, it is NOT illegal for Yokai to kill Yokai. It has been a tradition since the early yokai settlements from Year 5 - 1599. Ninjas (Shinobi) are not Yokai. They are high classed humans that specialize in Shadow abilities using tomes and runes.</li>
+              <li>• <Link to={`${BASE}/yokai-association-recovery-center`} className={LINK}>The Yokai Association Recovery Center (YARC)</Link> — Formed in 1779 AD by the YHCA. The YARC rehabilitates repeat offenders into making them relive their past errors so that they can make up for it. Intense Telepathy Regulators were used to force criminals to rewatch her memories one by one, while breaking their minds. This in fact, corrupts them, and then breaks them. This organization's ethics are….mildly concerning.</li>
+              <li>• <Link to={`${BASE}/ninja-yokai-association-quarters`} className={LINK}>The Ninja Yokai Association Quarters (NYAQ)</Link> — Formed in 1795 by the YHCA. There are a lot of yokai and humans who band together to become Ninjas through wealth, fame, and mercenaries. Ninjas are considered mercenaries in this world, or high classed humans. Some show restraint, while some don't. There are some slight corruption in the NYAQ, but it doesn't overpower the whole Ninja Association. Ninja Yokais that aren't human often protect their friends. Ninjas are the neutral line between Yokai and Humans. A line of ambiguity.</li>
             </ul>
           </div>
           <div>
             <EraLabel color="#ffd080">1809</EraLabel>
             <p>Birth of the Reinishi Karasu Generational Family (precursor to Hanako Reina's bloodline in SKTN).</p>
             <p className="mt-1"><span className="text-[#d4a96a]">18XX (Late 1800s):</span> Karasu Reinishi disappears and places a curse on the Reina generation, splitting it from the original Reinishi Tree.</p>
-            <p className="mt-1"><span className="text-[#d4a96a]">YARC - Ties Are Cut (1875):</span> During Death Eater's reign, he had cut ALL official ties off from the YHCA including the Yokai Side of the YHCA. This organization has gone rogue.</p>
+            <p className="mt-1"><span className="text-[#d4a96a]">YARC - Ties Are Cut (1875):</span> During Death Eater's reign, he had cut ALL official ties off from the YHCA including the Yokai Side of the YHCA. This organization has gone rogue. The funds that go the YARC are either from black markets, stock investments, or money laundering.</p>
           </div>
           <div>
             <EraLabel color="#ffd080">1900</EraLabel>
@@ -222,7 +245,8 @@ export default function NaiseikaiLore() {
           </div>
           <div>
             <EraLabel color="#7ef5ff">2060</EraLabel>
-            <p>Rise of Cyborgs as a distinct identity class. They are not androids or cybernetic synthetics — they're a carbon based copy on titanium alloy and Vapor Spirits.</p>
+            <p>Rise of Cyborgs as a distinct identity class. Celebrated in popular media and government campaigns. They are not androids or cybernetic synthetics — they're a carbon based copy on titanium alloy and Vapor Spirits.</p>
+            <p className="mt-1">• Vapor Spirits are docile. They help human kind alike to keep things balanced.</p>
           </div>
         </TimelineCard>
 
@@ -273,6 +297,7 @@ export default function NaiseikaiLore() {
 
         {/* Card 5 — 2100 and Beyond */}
         <TimelineCard icon="🔮" title="2100 and Beyond" accentColor="#7ef5ff">
+          <p>• <Link to={`${BASE}/megacorps-and-brands`} className={LINK}>Megacorps and Brands</Link></p>
           <p>The present-day timeline where all current stories take place across the Naisei-Kai Universe. Events from SKTN, SorenaoAne, HitoJinzo2GF, and DuraDekiruKoi all converge and unfold here.</p>
         </TimelineCard>
 
