@@ -322,8 +322,8 @@ export default function NeoJapanTechnoGeography() {
 
         {/* ── Bottom Nav ── */}
         <div className="flex justify-between mt-8 pt-6 border-t border-border">
-          <Link to="/world-lore-and-timeline/the-world-of-neo-japan" className="btn-neon-cyan text-sm px-4 py-2 rounded">
-            ← The World of Neo-Japan
+          <Link to="/world-lore-and-timeline/the-world-of-neo-japan/the-six-primordial-empresses" className="btn-neon-cyan text-sm px-4 py-2 rounded">
+            ← The Six Primordial Empresses
           </Link>
           <Link to="/world-lore-and-timeline/the-world-of-neo-japan/neo-japan-prefectures" className="btn-neon-purple text-sm px-4 py-2 rounded">
             Neo-Japan Prefectures →
