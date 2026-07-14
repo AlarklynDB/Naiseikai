@@ -169,7 +169,7 @@ export default function TheSixPrimordialEmpresses() {
       </p>
 
       <p className="text-base text-text-muted leading-relaxed mb-4">
-        The first fairytale underwent a lot of different titles within the Primordial years and beyond—which is why so many people bought it because of it's own popularity. There were at least up to 100 different titles, with at least four of them being the most popular in Japan's Literature History.
+        The first fairytale underwent a lot of different titles within the Primordial years and beyond—which is why so many people bought it because of it's own popularity. There were at least up to 100 different titles, with at least five of them being the most popular in Japan's Literature History.
       </p>
 
       <div
