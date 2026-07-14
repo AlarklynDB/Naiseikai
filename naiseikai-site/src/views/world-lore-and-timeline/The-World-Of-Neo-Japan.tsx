@@ -4,6 +4,13 @@ const BASE = '/world-lore-and-timeline/the-world-of-neo-japan'
 
 const TOPICS = [
   {
+    slug: 'the-six-primordial-empresses',
+    icon: '👸',
+    title: 'The Six Primordial Empresses',
+    desc: 'Roku-ri no Hajime-gen no Jotei — the six divine forces who governed life itself since Year 0, and the fairytale that made them real.',
+    color: '#ffd080',
+  },
+  {
     slug: 'neo-japan-techno-geography',
     icon: '🗾',
     title: 'Techno-Geography',
