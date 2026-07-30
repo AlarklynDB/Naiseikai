@@ -95,19 +95,6 @@ export default function Universe() {
   return (
     <div className="page-container">
 
-      {/* Piracy Notice */}
-      <div className="mb-8 rounded-xl border border-red-500/40 bg-[rgba(255,0,0,0.06)] p-4">
-        <p className="text-sm text-red-400 leading-relaxed">
-          <strong>[<Link to="/world-lore-and-timeline/the-world-of-neo-japan/yokai-association-recovery-center" className="underline hover:text-red-300">Y.A.R.C</Link> NOTICE - CLASS C PIRACY VIOLATION]</strong> Unauthorized redistribution of Naiseikai-Encoded lore and Stories has been detected.
-        </p>
-        <p className="text-sm text-red-400 leading-relaxed mt-1 pl-4">
-          You're not trying to pirate this entire site, are you….<em>user</em>…? Well, you are not getting away with it!
-        </p>
-        <p className="text-sm text-red-400 leading-relaxed mt-1">
-          This universe is heavily protected! Reuploading or stealing content will lead to legal consequences —and yes, we can track it. The YARC might be evil in this universe, but DON'T let them GET YOU TOO!!
-        </p>
-      </div>
-
       {/* Header */}
       <div className="mb-12">
         <span className="neon-sign neon-sign-purple text-[10px] mb-4 inline-block">Universe Overview</span>
