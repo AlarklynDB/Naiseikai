@@ -301,6 +301,18 @@
     color: #beffff;
   }
 
+  .btn-neon-amber {
+    @apply px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    color: #ffd080;
+    border: 1px solid rgba(255,179,71,0.5);
+    background: rgba(255,179,71,0.1);
+  }
+  .btn-neon-amber:hover {
+    background: rgba(255,179,71,0.2);
+    box-shadow: 0 0 12px rgba(255,179,71,0.4);
+    color: #ffe6b3;
+  }
+
   /* ── Neon sign box ── (decorative headers/labels) */
   .neon-sign {
     @apply inline-block px-4 py-1 rounded text-xs tracking-widest uppercase font-mono;
