@@ -274,6 +274,20 @@ function OverviewTab() {
             <p className="font-mono text-sm text-[#d49fff] mb-1">Honeyfeed</p>
             <p className="text-sm text-text-faint">Also available on Honeyfeed — free to read online.</p>
           </div>
+          <div className="neon-card">
+            <p className="font-mono text-sm text-[#ffd080] mb-2">AlarkiusEJ.com</p>
+            <p className="text-sm text-text-muted mb-4">
+              Get it straight from the author — no middleman, no delisting risk.
+            </p>
+            <a
+              href="https://www.alarkiusej.com/#books"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-neon-amber text-xs inline-block"
+            >
+              Buy The Quiet Crow &amp; The Ninja Exclusively at AlarkiusEJ.com →
+            </a>
+          </div>
         </div>
       </div>
 
