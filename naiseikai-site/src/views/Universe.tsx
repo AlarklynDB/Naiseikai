@@ -106,7 +106,7 @@ export default function Universe() {
           This Saga is where Pain mends and Molds the Heart &lt;3
         </p>
         <p className="text-text-faint text-xs mb-1">
-          © All Rights Reserved | KarasuEJ / Alarkius Elvya Jay | <a href="https://www.alarkiusej.com/" target="_blank" rel="noopener noreferrer" className="text-[#ffd080] hover:underline">https://www.alarkiusej.com/</a>
+          © {new Date().getFullYear()} All Rights Reserved | KarasuEJ / Alarkius Elvya Jay | <a href="https://www.alarkiusej.com/" target="_blank" rel="noopener noreferrer" className="text-[#ffd080] hover:underline">https://www.alarkiusej.com/</a>
         </p>
         <p className="text-text-faint text-xs mb-1">For Fanbase or sub-fandoms, please refer back to our official subreddits or this website!</p>
         <p className="text-text-faint text-xs italic mb-4">This universe's original source of inspiration is from Mob Psycho 100</p>
