@@ -49,7 +49,7 @@ export default function Footer() {
 
         <div className="border-t border-[rgba(100,80,200,0.15)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-text-faint">
-            © All Rights Reserved · KarasuEJ / Alarkius Elvya Jay ·{' '}
+            © {new Date().getFullYear()} All Rights Reserved · KarasuEJ / Alarkius Elvya Jay ·{' '}
             <a href="https://www.alarkiusej.com" className="hover:text-[#00e5ff] transition-colors">alarkiusej.com</a>
           </p>
           <p className="text-xs text-text-faint italic">
